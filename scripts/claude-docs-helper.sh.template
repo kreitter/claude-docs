@@ -1,15 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
-# Claude Code Documentation Helper Script v0.3.3
-# This script handles all /docs command functionality  
-# Installation path: ~/.claude-code-docs/claude-docs-helper.sh
+# Claude Documentation Helper Script v1.0.0
+# This script handles all /docs command functionality
+# Installation path: ~/.claude-docs/claude-docs-helper.sh
 
 # Script version
-SCRIPT_VERSION="0.3.3"
+SCRIPT_VERSION="1.0.0"
 
 # Fixed installation path (no need for placeholder replacement)
-DOCS_PATH="$HOME/.claude-code-docs"
+DOCS_PATH="$HOME/.claude-docs"
 MANIFEST="$DOCS_PATH/docs/docs_manifest.json"
 
 # No colors since they don't work in terminal anyway
@@ -23,8 +23,8 @@ sanitize_input() {
 
 # Function to print documentation header
 print_doc_header() {
-    echo "📚 COMMUNITY MIRROR: https://github.com/ericbuess/claude-code-docs"
-    echo "📖 OFFICIAL DOCS: https://docs.anthropic.com/en/docs/claude-code"
+    echo "📚 COMMUNITY MIRROR: https://github.com/kreitter/claude-docs"
+    echo "📖 OFFICIAL DOCS: https://docs.anthropic.com"
     echo ""
 }
 
@@ -77,9 +77,9 @@ show_freshness() {
     
     # Read manifest
     if [[ ! -f "$MANIFEST" ]]; then
-        echo "❌ Error: Documentation not found at ~/.claude-code-docs"
+        echo "❌ Error: Documentation not found at ~/.claude-docs"
         echo "Please reinstall with:"
-        echo "curl -fsSL https://raw.githubusercontent.com/ericbuess/claude-code-docs/main/install.sh | bash"
+        echo "curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash"
         exit 1
     fi
     
@@ -213,7 +213,7 @@ read_doc() {
             ls "$DOCS_PATH/docs" | grep '\.md$' | sed 's/\.md$//' | sort | column -c 80
         fi
         echo ""
-        echo "💡 Tip: Use grep to search across all docs: cd ~/.claude-code-docs && grep -r 'search term' docs/"
+        echo "💡 Tip: Use grep to search across all docs: cd ~/.claude-docs && grep -r 'search term' docs/"
     fi
 }
 
@@ -264,9 +264,9 @@ whats_new() {
     while IFS= read -r commit_line && [[ $count -lt 5 ]]; do
         local hash=$(echo "$commit_line" | cut -d' ' -f1)
         local date=$(git show -s --format=%cr "$hash" 2>/dev/null || echo "unknown")
-        
+
         echo "• $date:"
-        echo "  📎 https://github.com/ericbuess/claude-code-docs/commit/$hash"
+        echo "  📎 https://github.com/kreitter/claude-docs/commit/$hash"
         
         # Show which docs changed
         local changed_docs=$(git diff-tree --no-commit-id --name-only -r "$hash" -- docs/*.md 2>/dev/null | sed 's|docs/||' | sed 's|\.md$||' | head -5)
@@ -284,7 +284,7 @@ whats_new() {
         echo ""
     fi
     
-    echo "📎 Full changelog: https://github.com/ericbuess/claude-code-docs/commits/main/docs"
+    echo "📎 Full changelog: https://github.com/kreitter/claude-docs/commits/main/docs"
     echo "📚 COMMUNITY MIRROR - NOT AFFILIATED WITH ANTHROPIC"
     
     # Re-enable strict error handling
@@ -300,19 +300,19 @@ uninstall() {
     echo "To uninstall Claude Code Documentation Mirror"
     echo "==========================================="
     echo ""
-    
+
     echo "This will remove:"
     echo "  • The /docs command from ~/.claude/commands/docs.md"
     echo "  • The auto-update hook from ~/.claude/settings.json"
-    echo "  • The installation directory ~/.claude-code-docs"
+    echo "  • The installation directory ~/.claude-docs"
     echo ""
-    
+
     echo "Run this command in your terminal:"
     echo ""
-    echo "  ~/.claude-code-docs/uninstall.sh"
+    echo "  ~/.claude-docs/uninstall.sh"
     echo ""
     echo "Or to skip confirmation:"
-    echo "  echo 'y' | ~/.claude-code-docs/uninstall.sh"
+    echo "  echo 'y' | ~/.claude-docs/uninstall.sh"
     echo ""
 }
 
