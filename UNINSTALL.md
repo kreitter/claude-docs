@@ -1,17 +1,24 @@
-# Uninstalling Claude Code Documentation Mirror
+# Uninstalling Claude Documentation Mirror
 
 ## Quick Uninstall
 
-### For v0.3+ (installed at ~/.claude-code-docs)
+### For v1.0.0+ (installed at ~/.claude-docs)
 
 From anywhere, run:
 ```bash
-~/.claude-code-docs/uninstall.sh
+~/.claude-docs/uninstall.sh
 ```
 
 Or use the docs command:
 ```bash
 /docs uninstall
+```
+
+### For v0.3.x (installed at ~/.claude-code-docs)
+
+From anywhere, run:
+```bash
+~/.claude-code-docs/uninstall.sh
 ```
 
 ### For v0.2 or older (custom installation locations)
@@ -28,7 +35,8 @@ The uninstaller will remove:
 1. **The /docs command** from `~/.claude/commands/docs.md`
 2. **The auto-update hook** from `~/.claude/settings.json`
 3. **The installation directory**:
-   - v0.3+: `~/.claude-code-docs`
+   - v1.0.0+: `~/.claude-docs`
+   - v0.3.x: `~/.claude-code-docs`
    - v0.2 or older: wherever you installed it
 
 ## Manual Uninstall
@@ -41,18 +49,23 @@ rm -f ~/.claude/commands/docs.md
 ```
 
 ### 2. Remove the hook from Claude settings:
-Use /hooks in Claude Code CLI or Edit `~/.claude/settings.json` direction to remove the PreToolUse hook that references claude-code-docs.
+Use /hooks in Claude Code CLI or Edit `~/.claude/settings.json` directly to remove the PreToolUse hook that references claude-docs or claude-code-docs.
 
 ### 3. Remove the installation directory:
 
-For v0.3+:
+For v1.0.0+:
+```bash
+rm -rf ~/.claude-docs
+```
+
+For v0.3.x:
 ```bash
 rm -rf ~/.claude-code-docs
 ```
 
 For older versions:
 ```bash
-rm -rf /path/to/your/claude-code-docs
+rm -rf /path/to/your/installation
 ```
 
 ## Multiple Installations
@@ -61,7 +74,7 @@ If you have multiple installations (e.g., from testing different versions), the 
 
 To find all installations:
 ```bash
-find ~ -name "claude-code-docs" -type d 2>/dev/null | grep -v ".claude-code-docs"
+find ~ -name "claude-docs" -o -name "claude-code-docs" -type d 2>/dev/null
 ```
 
 ## Backup Created
@@ -78,5 +91,5 @@ After uninstalling, there should be no traces left except:
 
 To reinstall after uninstalling:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ericbuess/claude-code-docs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash
 ```
