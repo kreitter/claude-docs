@@ -123,15 +123,15 @@ if [[ ${#installations[@]} -gt 0 ]]; then
         
         if [[ -d "$path/.git" ]]; then
             # Save current directory
-            local current_dir=$(pwd)
+            CURRENT_DIR=$(pwd)
             cd "$path"
             
             if [[ -z "$(git status --porcelain 2>/dev/null)" ]]; then
-                cd "$current_dir"
+                cd "$CURRENT_DIR"
                 rm -rf "$path"
                 echo "✓ Removed $path (clean git repo)"
             else
-                cd "$current_dir"
+                cd "$CURRENT_DIR"
                 echo "⚠️  Preserved $path (has uncommitted changes)"
             fi
         else
