@@ -73,13 +73,13 @@ def save_manifest(docs_dir: Path, manifest: dict) -> None:
     manifest["last_updated"] = datetime.now().isoformat()
     
     # Get GitHub repository from environment or use default
-    github_repo = os.environ.get('GITHUB_REPOSITORY', 'ericbuess/claude-code-docs')
+    github_repo = os.environ.get('GITHUB_REPOSITORY', 'kreitter/claude-docs')
     github_ref = os.environ.get('GITHUB_REF_NAME', 'main')
-    
+
     # Validate repository name format (owner/repo)
     if not re.match(r'^[\w.-]+/[\w.-]+$', github_repo):
         logger.warning(f"Invalid repository format: {github_repo}, using default")
-        github_repo = 'ericbuess/claude-code-docs'
+        github_repo = 'kreitter/claude-docs'
     
     # Validate branch/ref name
     if not re.match(r'^[\w.-]+$', github_ref):
@@ -94,28 +94,37 @@ def save_manifest(docs_dir: Path, manifest: dict) -> None:
 
 
 def url_to_safe_filename(url_path: str) -> str:
-    """Convert a URL path to a safe filename that preserves hierarchy only when needed."""
-    # Remove any known prefix patterns
-    for prefix in ['/en/docs/claude-code/', '/docs/claude-code/', '/claude-code/']:
-        if prefix in url_path:
-            path = url_path.split(prefix)[-1]
-            break
+    """
+    Convert a URL path to a safe filename with full consistency.
+
+    Strips the language prefix (/en/) and preserves the full meaningful path structure
+    using double underscores as separators. This ensures:
+    - 100% consistent naming across all doc types
+    - Zero collision risk (full path preserved)
+    - Clear origin visibility (api__ vs docs__claude-code__ prefix)
+    - Simple logic with no special cases
+
+    Examples:
+        /en/docs/claude-code/overview -> docs__claude-code__overview.md
+        /en/api/messages -> api__messages.md
+        /en/release-notes/claude-code -> release-notes__claude-code.md
+    """
+    # Strip universal language prefix (all docs are English)
+    if url_path.startswith('/en/'):
+        path = url_path[4:]  # Remove '/en/'
     else:
-        # If no known prefix, take everything after the last occurrence of 'claude-code/'
-        if 'claude-code/' in url_path:
-            path = url_path.split('claude-code/')[-1]
-        else:
-            path = url_path
-    
-    # If no subdirectories, just use the filename
-    if '/' not in path:
-        return path + '.md' if not path.endswith('.md') else path
-    
-    # For subdirectories, replace slashes with double underscores
-    # e.g., "advanced/setup" becomes "advanced__setup.md"
+        path = url_path
+
+    # Clean leading/trailing slashes
+    path = path.strip('/')
+
+    # Convert path separators to double underscores
     safe_name = path.replace('/', '__')
+
+    # Ensure .md extension
     if not safe_name.endswith('.md'):
         safe_name += '.md'
+
     return safe_name
 
 
@@ -170,7 +179,7 @@ def discover_sitemap_and_base_url(session: requests.Session) -> Tuple[str, str]:
     raise Exception("Could not find a valid sitemap")
 
 
-def discover_claude_code_pages(session: requests.Session, sitemap_url: str) -> List[str]:
+def discover_docs_from_sitemap(session: requests.Session, sitemap_url: str) -> List[str]:
     """
     Dynamically discover all Claude Code documentation pages from the sitemap.
     Now with better pattern matching flexibility.
@@ -208,45 +217,45 @@ def discover_claude_code_pages(session: requests.Session, sitemap_url: str) -> L
                     urls.append(loc_elem.text)
         
         logger.info(f"Found {len(urls)} total URLs in sitemap")
-        
-        # Filter for ENGLISH Claude Code documentation pages only
-        claude_code_pages = []
-        
-        # Only accept English documentation patterns
+
+        # Filter for ENGLISH documentation pages (Claude Code docs and API reference)
+        discovered_docs = []
+
+        # Accept English documentation and API patterns
         english_patterns = [
-            '/en/docs/claude-code/',
+            '/en/docs/claude-code/',  # Claude Code specific docs
+            '/en/api/',                # General API reference
         ]
-        
+
         for url in urls:
             # Check if URL matches English pattern specifically
             if any(pattern in url for pattern in english_patterns):
                 parsed = urlparse(url)
                 path = parsed.path
-                
+
                 # Remove any file extension
                 if path.endswith('.html'):
                     path = path[:-5]
                 elif path.endswith('/'):
                     path = path[:-1]
-                
+
                 # Skip certain types of pages
                 skip_patterns = [
                     '/tool-use/',  # Tool-specific pages
                     '/examples/',  # Example pages
                     '/legacy/',    # Legacy documentation
-                    '/api/',       # API reference pages
                     '/reference/', # Reference pages that aren't core docs
                 ]
-                
+
                 if not any(skip in path for skip in skip_patterns):
-                    claude_code_pages.append(path)
-        
+                    discovered_docs.append(path)
+
         # Remove duplicates and sort
-        claude_code_pages = sorted(list(set(claude_code_pages)))
-        
-        logger.info(f"Discovered {len(claude_code_pages)} Claude Code documentation pages")
-        
-        return claude_code_pages
+        discovered_docs = sorted(list(set(discovered_docs)))
+
+        logger.info(f"Discovered {len(discovered_docs)} documentation pages from sitemap")
+
+        return discovered_docs
 
     except Exception as e:
         logger.error(f"Failed to discover pages from sitemap: {e}")
@@ -272,7 +281,7 @@ def discover_claude_code_pages(session: requests.Session, sitemap_url: str) -> L
         ]
 
 
-def discover_claude_code_pages_from_llms_txt(session: requests.Session, base_url: str) -> List[str]:
+def discover_claude_code_cli_docs(session: requests.Session, base_url: str) -> List[str]:
     """
     Discover Claude Code documentation pages from llms.txt file.
     This is simpler and more reliable than parsing the sitemap.
@@ -288,7 +297,8 @@ def discover_claude_code_pages_from_llms_txt(session: requests.Session, base_url
         response.raise_for_status()
 
         pages = []
-        pattern = re.compile(r'^\- \[.*\]\((https://[^)]+/en/docs/claude-code/([^)]+))\.md\)')
+        # Match any URL containing "claude-code" in the path
+        pattern = re.compile(r'^\- \[.*\]\((https://[^)]+/en/((?:docs|api|release-notes)/[^)]*claude-code[^)]*))\.md\)')
 
         for line in response.text.splitlines():
             match = pattern.match(line)
@@ -296,7 +306,7 @@ def discover_claude_code_pages_from_llms_txt(session: requests.Session, base_url
                 full_url = match.group(1)
                 page_path = match.group(2)
                 # Construct the path format expected by the rest of the script
-                pages.append(f"/en/docs/claude-code/{page_path}")
+                pages.append(f"/en/{page_path}")
 
         pages = sorted(list(set(pages)))  # Remove duplicates and sort
         logger.info(f"Discovered {len(pages)} Claude Code documentation pages from llms.txt")
@@ -503,10 +513,10 @@ def cleanup_old_files(docs_dir: Path, current_files: Set[str], manifest: dict) -
 def main():
     """Main function with improved robustness."""
     start_time = datetime.now()
-    logger.info("Starting Claude Code documentation fetch (improved version)")
-    
+    logger.info("Starting Claude documentation fetch v1.0.0")
+
     # Log configuration
-    github_repo = os.environ.get('GITHUB_REPOSITORY', 'ericbuess/claude-code-docs')
+    github_repo = os.environ.get('GITHUB_REPOSITORY', 'kreitter/claude-docs')
     logger.info(f"GitHub repository: {github_repo}")
     
     # Create docs directory at repository root
@@ -526,55 +536,66 @@ def main():
     
     # Create a session for connection pooling
     sitemap_url = None
-    discovery_method = None
+    discovery_methods = []
     with requests.Session() as session:
         # Try to discover from docs.claude.com first (new domain)
         base_url = "https://docs.claude.com"
 
-        # Try llms.txt first (simpler, more reliable)
+        # Collect pages from multiple sources
+        all_pages = []
+
+        # Source 1: llms.txt for Claude Code-specific documentation
         try:
-            documentation_pages = discover_claude_code_pages_from_llms_txt(session, base_url)
-            discovery_method = "llms.txt"
+            claude_code_cli_docs = discover_claude_code_cli_docs(session, base_url)
+            all_pages.extend(claude_code_cli_docs)
+            discovery_methods.append(f"llms.txt({len(claude_code_cli_docs)} pages)")
+            logger.info(f"✓ llms.txt: {len(claude_code_cli_docs)} Claude Code CLI docs")
         except Exception as e:
             logger.warning(f"Failed to discover from llms.txt: {e}")
-            logger.info("Falling back to sitemap discovery...")
 
-            # Fall back to sitemap discovery
-            try:
-                sitemap_url, base_url = discover_sitemap_and_base_url(session)
-                documentation_pages = discover_claude_code_pages(session, sitemap_url)
-                discovery_method = "sitemap"
-            except Exception as e2:
-                logger.error(f"Failed to discover from sitemap: {e2}")
-                logger.warning("Using hardcoded fallback page list...")
+        # Source 2: sitemap for general API documentation
+        try:
+            sitemap_url, discovered_base_url = discover_sitemap_and_base_url(session)
+            general_docs = discover_docs_from_sitemap(session, sitemap_url)
+            all_pages.extend(general_docs)
+            discovery_methods.append(f"sitemap({len(general_docs)} pages)")
+            logger.info(f"✓ sitemap: {len(general_docs)} general/API docs")
+        except Exception as e:
+            logger.warning(f"Failed to discover from sitemap: {e}")
 
-                # Last resort: hardcoded list
-                documentation_pages = [
-                    "/en/docs/claude-code/overview",
-                    "/en/docs/claude-code/setup",
-                    "/en/docs/claude-code/quickstart",
-                    "/en/docs/claude-code/memory",
-                    "/en/docs/claude-code/common-workflows",
-                    "/en/docs/claude-code/ide-integrations",
-                    "/en/docs/claude-code/mcp",
-                    "/en/docs/claude-code/github-actions",
-                    "/en/docs/claude-code/sdk",
-                    "/en/docs/claude-code/troubleshooting",
-                    "/en/docs/claude-code/security",
-                    "/en/docs/claude-code/settings",
-                    "/en/docs/claude-code/hooks",
-                    "/en/docs/claude-code/costs",
-                    "/en/docs/claude-code/monitoring-usage",
-                ]
-                discovery_method = "hardcoded"
-        
-        if not documentation_pages:
+        # Deduplicate and sort
+        all_docs = sorted(list(set(all_pages)))
+        logger.info(f"Combined total: {len(all_docs)} unique pages")
+
+        # Fallback: if both sources failed, use hardcoded list
+        if not all_docs:
+            logger.warning("All discovery methods failed, using hardcoded fallback...")
+            all_docs = [
+                "/en/docs/claude-code/overview",
+                "/en/docs/claude-code/setup",
+                "/en/docs/claude-code/quickstart",
+                "/en/docs/claude-code/memory",
+                "/en/docs/claude-code/common-workflows",
+                "/en/docs/claude-code/ide-integrations",
+                "/en/docs/claude-code/mcp",
+                "/en/docs/claude-code/github-actions",
+                "/en/docs/claude-code/sdk",
+                "/en/docs/claude-code/troubleshooting",
+                "/en/docs/claude-code/security",
+                "/en/docs/claude-code/settings",
+                "/en/docs/claude-code/hooks",
+                "/en/docs/claude-code/costs",
+                "/en/docs/claude-code/monitoring-usage",
+            ]
+            discovery_methods = ["hardcoded"]
+
+        if not all_docs:
             logger.error("No documentation pages discovered!")
             sys.exit(1)
-        
+
         # Fetch each discovered page
-        for i, page_path in enumerate(documentation_pages, 1):
-            logger.info(f"Processing {i}/{len(documentation_pages)}: {page_path}")
+        for i, page_path in enumerate(all_docs, 1):
+            logger.info(f"Processing {i}/{len(all_docs)}: {page_path}")
             
             try:
                 filename, content = fetch_markdown_content(page_path, session, base_url)
@@ -605,7 +626,7 @@ def main():
                 successful += 1
                 
                 # Rate limiting
-                if i < len(documentation_pages):
+                if i < len(all_docs):
                     time.sleep(RATE_LIMIT_DELAY)
                     
             except Exception as e:
@@ -654,15 +675,15 @@ def main():
     new_manifest["fetch_metadata"] = {
         "last_fetch_completed": datetime.now().isoformat(),
         "fetch_duration_seconds": (datetime.now() - start_time).total_seconds(),
-        "total_pages_discovered": len(documentation_pages),
+        "total_pages_discovered": len(all_docs),
         "pages_fetched_successfully": successful,
         "pages_failed": failed,
         "failed_pages": failed_pages,
-        "discovery_method": discovery_method,
+        "discovery_methods": discovery_methods,  # Changed to plural for hybrid approach
         "sitemap_url": sitemap_url if sitemap_url else None,
         "base_url": base_url,
         "total_files": len(fetched_files),
-        "fetch_tool_version": "3.1"
+        "fetch_tool_version": "1.0.0"  # Version for v1.0.0 release
     }
     
     # Save new manifest
@@ -672,8 +693,8 @@ def main():
     duration = datetime.now() - start_time
     logger.info("\n" + "="*50)
     logger.info(f"Fetch completed in {duration}")
-    logger.info(f"Discovered pages: {len(documentation_pages)}")
-    logger.info(f"Successful: {successful}/{len(documentation_pages)}")
+    logger.info(f"Discovered pages: {len(all_docs)}")
+    logger.info(f"Successful: {successful}/{len(all_docs)}")
     logger.info(f"Failed: {failed}")
     
     if failed_pages:

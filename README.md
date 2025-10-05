@@ -1,27 +1,31 @@
-# Claude Code Documentation Mirror
+# Claude Documentation Mirror
 
-[![Last Update](https://img.shields.io/github/last-commit/ericbuess/claude-code-docs/main.svg?label=docs%20updated)](https://github.com/ericbuess/claude-code-docs/commits/main)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/kreitter/claude-docs/releases)
+[![Last Update](https://img.shields.io/github/last-commit/kreitter/claude-docs/main.svg?label=docs%20updated)](https://github.com/kreitter/claude-docs/commits/main)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue)]()
-[![Beta](https://img.shields.io/badge/status-early%20beta-orange)](https://github.com/ericbuess/claude-code-docs/issues)
 
-Local mirror of Claude Code documentation files from https://docs.anthropic.com/en/docs/claude-code/, updated every 3 hours.
+Local mirror of comprehensive Claude documentation from https://docs.anthropic.com/, updated every 3 hours.
 
-## ⚠️ Early Beta Notice
+**Includes:**
+- 38 Claude Code CLI documentation files
+- 76 API reference documentation files
+- 2 additional files (changelog, release notes)
+- **Total: 116 documentation files**
 
-**This is an early beta release**. There may be errors or unexpected behavior. If you encounter any issues, please [open an issue](https://github.com/ericbuess/claude-code-docs/issues) - your feedback helps improve the tool!
+## 🎉 Version 1.0.0 - Production Ready
 
-## 🆕 Version 0.3.3 - Changelog Integration
+**This release includes:**
+- ✅ **Production ready**: Stable, tested, comprehensive documentation coverage
+- 📚 **Complete scope**: CLI docs + API docs + release notes
+- 🔄 **Renamed for clarity**: Now accurately reflects comprehensive Claude documentation
+- 🛠️ **Path migration**: Auto-migrates from v0.3.x (`~/.claude-code-docs` → `~/.claude-docs`)
+- 🐛 **Critical fixes**: Installer, uninstaller, and macOS compatibility improvements
 
-**New in this version:**
-- 📋 **Claude Code Changelog**: Access the official Claude Code release notes with `/docs changelog`
-- 🍎 **Full macOS compatibility**: Fixed shell compatibility issues for Mac users
-- 🐧 **Linux support**: Tested on Ubuntu, Debian, and other distributions
-- 🔧 **Improved installer**: Better handling of updates and edge cases
-
-To update:
+**Migrating from v0.3.x:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ericbuess/claude-code-docs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash
 ```
+Your installation will automatically migrate to the new path. No manual action required.
 
 ## Why This Exists
 
@@ -50,13 +54,13 @@ This tool requires the following to be installed:
 Run this single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ericbuess/claude-code-docs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash
 ```
 
 This will:
-1. Install to `~/.claude-code-docs` (or migrate existing installation)
+1. Install to `~/.claude-docs` (auto-migrates from v0.3.x if present)
 2. Create the `/docs` slash command to pass arguments to the tool and tell it where to find the docs
-3. Set up a 'PreToolUse' 'Read' hook to enable automatic git pull when reading docs from the ~/.claude-code-docs`
+3. Set up a 'PreToolUse' 'Read' hook to enable automatic git pull when reading docs from `~/.claude-docs`
 
 **Note**: The command is `/docs (user)` - it will show in your command list with "(user)" after it to indicate it's a user-created command.
 
@@ -94,7 +98,7 @@ The changelog feature fetches the latest release notes directly from the officia
 
 ### Uninstall
 ```bash
-/docs uninstall    # Get commnd to remove claude-code-docs completely
+/docs uninstall    # Get command to remove claude-docs completely
 ```
 
 ### Creative usage examples
@@ -127,7 +131,7 @@ Note: If automatic updates fail, you can always run the installer again to get t
 Regardless of which version you have installed, simply run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ericbuess/claude-code-docs/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash
 ```
 
 The installer will handle migration and updates automatically.
@@ -143,8 +147,8 @@ If `/docs` returns "command not found":
 ### Documentation not updating
 If documentation seems outdated:
 1. Run `/docs -t` to check sync status and force an update
-2. Manually update: `cd ~/.claude-code-docs && git pull`
-3. Check if GitHub Actions are running: [View Actions](https://github.com/ericbuess/claude-code-docs/actions)
+2. Manually update: `cd ~/.claude-docs && git pull`
+3. Check if GitHub Actions are running: [View Actions](https://github.com/kreitter/claude-docs/actions)
 
 ### Installation errors
 - **"git/jq/curl not found"**: Install the missing tool first
@@ -161,7 +165,7 @@ To completely remove the docs integration:
 
 Or run:
 ```bash
-~/.claude-code-docs/uninstall.sh
+~/.claude-docs/uninstall.sh
 ```
 
 See [UNINSTALL.md](UNINSTALL.md) for manual uninstall instructions.
@@ -179,35 +183,42 @@ See [UNINSTALL.md](UNINSTALL.md) for manual uninstall instructions.
 
 ## What's New
 
-### v0.3.3 (Latest)
-- Added Claude Code changelog integration (`/docs changelog`)
-- Fixed shell compatibility for macOS users (zsh/bash)
-- Improved documentation and error messages
-- Added platform compatibility badges
+See [CHANGELOG.md](CHANGELOG.md) for complete version history.
 
-### v0.3.2
-- Fixed automatic update functionality  
-- Improved handling of local repository changes
-- Better error recovery during updates
+### v1.0.0 (Current - Production Ready)
+- **Comprehensive scope**: 38 CLI docs + 76 API docs = 116 total files
+- **Path migration**: Auto-migrates `~/.claude-code-docs` → `~/.claude-docs`
+- **Repository**: Now at `kreitter/claude-docs` (fork with enhancements)
+- **Critical fixes**: Installer, uninstaller, macOS compatibility
+- **Accurate naming**: Variables and paths reflect actual scope
+- **Production ready**: Stable, tested, ready for daily use
+
+### Previous Versions
+- v0.3.x: Claude Code CLI docs only, at ericbuess/claude-code-docs
+- See upstream: https://github.com/ericbuess/claude-code-docs/commits/main
 
 ## Contributing
 
 **Contributions are welcome!** This is a community project and we'd love your help:
 
-- 🪟 **Windows Support**: Want to help add Windows compatibility? [Fork the repository](https://github.com/ericbuess/claude-code-docs/fork) and submit a PR!
-- 🐛 **Bug Reports**: Found something not working? [Open an issue](https://github.com/ericbuess/claude-code-docs/issues)
-- 💡 **Feature Requests**: Have an idea? [Start a discussion](https://github.com/ericbuess/claude-code-docs/issues)
+- 🪟 **Windows Support**: Want to help add Windows compatibility? [Fork the repository](https://github.com/kreitter/claude-docs/fork) and submit a PR!
+- 🐛 **Bug Reports**: Found something not working? [Open an issue](https://github.com/kreitter/claude-docs/issues)
+- 💡 **Feature Requests**: Have an idea? [Start a discussion](https://github.com/kreitter/claude-docs/issues)
 - 📝 **Documentation**: Help improve docs or add examples
 
 You can also use Claude Code itself to help build features - just fork the repo and let Claude assist you!
 
+## Upstream
+
+This is a fork of [ericbuess/claude-code-docs](https://github.com/ericbuess/claude-code-docs) with the following enhancements:
+- Expanded scope to include API documentation
+- Enhanced installer with migration support
+- Improved error handling and macOS compatibility
+- Better naming consistency
+
 ## Known Issues
 
-As this is an early beta, you might encounter some issues:
-- Auto-updates may occasionally fail on some network configurations
-- Some documentation links might not resolve correctly
-
-If you find any issues not listed here, please [report them](https://github.com/ericbuess/claude-code-docs/issues)!
+If you find any issues, please [report them](https://github.com/kreitter/claude-docs/issues)!
 
 ## License
 

@@ -1,14 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
-# Claude Code Docs Installer v0.3.3 - Changelog integration and compatibility improvements
-# This script installs/migrates claude-code-docs to ~/.claude-code-docs
+# Claude Docs Installer v1.0.0 - Production release with comprehensive scope
+# This script installs/migrates claude-docs to ~/.claude-docs
 
-echo "Claude Code Docs Installer v0.3.3"
-echo "==============================="
+echo "Claude Docs Installer v1.0.0"
+echo "============================"
 
 # Fixed installation location
-INSTALL_DIR="$HOME/.claude-code-docs"
+INSTALL_DIR="$HOME/.claude-docs"
 
 # Branch to use for installation
 INSTALL_BRANCH="main"
@@ -48,26 +48,29 @@ find_existing_installations() {
     # Check command file for paths
     if [[ -f ~/.claude/commands/docs.md ]]; then
         # Look for paths in the command file
-        # v0.1 format: LOCAL DOCS AT: /path/to/claude-code-docs/docs/
-        # v0.2+ format: Execute: /path/to/claude-code-docs/helper.sh
+        # v0.1-v0.3.x: /path/to/claude-code-docs/
+        # v1.0.0+: /path/to/claude-docs/
         while IFS= read -r line; do
-            # v0.1 format
+            # v0.1 format: LOCAL DOCS AT: /path/to/..../docs/
             if [[ "$line" =~ LOCAL\ DOCS\ AT:\ ([^[:space:]]+)/docs/ ]]; then
                 local path="${BASH_REMATCH[1]}"
                 path="${path/#\~/$HOME}"
                 [[ -d "$path" ]] && paths+=("$path")
             fi
-            # v0.2+ format
-            if [[ "$line" =~ Execute:.*claude-code-docs ]]; then
-                # Extract path from various formats
-                local path=$(echo "$line" | grep -o '[^ "]*claude-code-docs[^ "]*' | head -1)
+            # v0.2+ format: Execute: /path/to/.../helper.sh
+            if [[ "$line" =~ Execute:.*(claude-code-docs|claude-docs) ]]; then
+                # Extract path from various formats (match both old and new naming)
+                local path=$(echo "$line" | grep -o '[^ "]*claude-\(code-\)\?docs[^ "]*' | head -1)
                 path="${path/#\~/$HOME}"
-                
+
                 # Get directory part
                 if [[ -d "$path" ]]; then
                     paths+=("$path")
-                elif [[ -d "$(dirname "$path")" ]] && [[ "$(basename "$(dirname "$path")")" == "claude-code-docs" ]]; then
-                    paths+=("$(dirname "$path")")
+                elif [[ -d "$(dirname "$path")" ]]; then
+                    local dirname=$(basename "$(dirname "$path")")
+                    if [[ "$dirname" == "claude-code-docs" || "$dirname" == "claude-docs" ]]; then
+                        paths+=("$(dirname "$path")")
+                    fi
                 fi
             fi
         done < ~/.claude/commands/docs.md
@@ -77,27 +80,27 @@ find_existing_installations() {
     if [[ -f ~/.claude/settings.json ]]; then
         local hooks=$(jq -r '.hooks.PreToolUse[]?.hooks[]?.command // empty' ~/.claude/settings.json 2>/dev/null)
         while IFS= read -r cmd; do
-            if [[ "$cmd" =~ claude-code-docs ]]; then
-                # Extract paths from v0.1 complex hook format
+            if [[ "$cmd" =~ claude-code-docs|claude-docs ]]; then
+                # Extract paths from hooks (match both old and new naming)
                 # Look for patterns like: "/path/to/claude-code-docs/.last_check"
-                local v01_paths=$(echo "$cmd" | grep -o '"[^"]*claude-code-docs[^"]*"' | sed 's/"//g' || true)
+                local v01_paths=$(echo "$cmd" | grep -oE '"[^"]*(claude-code-docs|claude-docs)[^"]*"' | sed 's/"//g' || true)
                 while IFS= read -r path; do
                     [[ -z "$path" ]] && continue
                     # Extract just the directory part
-                    if [[ "$path" =~ (.*/claude-code-docs)(/.*)?$ ]]; then
+                    if [[ "$path" =~ (.*/(claude-code-docs|claude-docs))(/.*)?$ ]]; then
                         path="${BASH_REMATCH[1]}"
                         path="${path/#\~/$HOME}"
                         [[ -d "$path" ]] && paths+=("$path")
                     fi
                 done <<< "$v01_paths"
-                
+
                 # Also try v0.2+ simpler format
-                local found=$(echo "$cmd" | grep -o '[^ "]*claude-code-docs[^ "]*' || true)
+                local found=$(echo "$cmd" | grep -oE '[^ "]*(claude-code-docs|claude-docs)[^ "]*' || true)
                 while IFS= read -r path; do
                     [[ -z "$path" ]] && continue
                     path="${path/#\~/$HOME}"
-                    # Clean up path to get the claude-code-docs directory
-                    if [[ "$path" =~ (.*/claude-code-docs)(/.*)?$ ]]; then
+                    # Clean up path to get the directory
+                    if [[ "$path" =~ (.*/(claude-code-docs|claude-docs))(/.*)?$ ]]; then
                         path="${BASH_REMATCH[1]}"
                     fi
                     [[ -d "$path" ]] && paths+=("$path")
@@ -105,12 +108,10 @@ find_existing_installations() {
             fi
         done <<< "$hooks"
     fi
-    
-    # Also check current directory if running from an installation
-    if [[ -f "./docs/docs_manifest.json" && "$(pwd)" != "$INSTALL_DIR" ]]; then
-        paths+=("$(pwd)")
-    fi
-    
+
+    # DO NOT check current directory - it could be a development repository
+    # Only migrate from known installation paths found above
+
     # Deduplicate and exclude new location (guard empty/unset array)
     if [[ ${#paths[@]-0} -gt 0 ]]; then
         printf '%s\n' "${paths[@]}" | grep -v "^$INSTALL_DIR$" | sort -u
@@ -137,8 +138,8 @@ migrate_installation() {
     fi
     
     # Fresh install at new location
-    echo "Installing fresh at ~/.claude-code-docs..."
-    git clone -b "$INSTALL_BRANCH" https://github.com/ericbuess/claude-code-docs.git "$INSTALL_DIR"
+    echo "Installing fresh at ~/.claude-docs..."
+    git clone -b "$INSTALL_BRANCH" https://github.com/kreitter/claude-docs.git "$INSTALL_DIR"
     cd "$INSTALL_DIR"
     
     # Remove old directory if safe
@@ -361,9 +362,9 @@ fi
 
 # Check if already installed at new location
 if [[ -d "$INSTALL_DIR" && -f "$INSTALL_DIR/docs/docs_manifest.json" ]]; then
-    echo "✓ Found installation at ~/.claude-code-docs"
+    echo "✓ Found installation at ~/.claude-docs"
     echo "  Updating to latest version..."
-    
+
     # Update it safely
     safe_git_update "$INSTALL_DIR"
     cd "$INSTALL_DIR"
@@ -376,16 +377,16 @@ else
     else
         # Fresh installation
         echo "No existing installation found"
-        echo "Installing fresh to ~/.claude-code-docs..."
-        
-        git clone -b "$INSTALL_BRANCH" https://github.com/ericbuess/claude-code-docs.git "$INSTALL_DIR"
+        echo "Installing fresh to ~/.claude-docs..."
+
+        git clone -b "$INSTALL_BRANCH" https://github.com/kreitter/claude-docs.git "$INSTALL_DIR"
         cd "$INSTALL_DIR"
     fi
 fi
 
 # Now we're in $INSTALL_DIR, set up the new script-based system
 echo ""
-echo "Setting up Claude Code Docs v0.3.3..."
+echo "Setting up Claude Docs v1.0.0..."
 
 # Copy helper script from template
 echo "Installing helper script..."
@@ -396,7 +397,7 @@ if [[ -f "$INSTALL_DIR/scripts/claude-docs-helper.sh.template" ]]; then
 else
     echo "  ⚠️  Template file missing, attempting recovery..."
     # Try to fetch just the template file
-    if curl -fsSL "https://raw.githubusercontent.com/ericbuess/claude-code-docs/$INSTALL_BRANCH/scripts/claude-docs-helper.sh.template" -o "$INSTALL_DIR/claude-docs-helper.sh" 2>/dev/null; then
+    if curl -fsSL "https://raw.githubusercontent.com/kreitter/claude-docs/$INSTALL_BRANCH/scripts/claude-docs-helper.sh.template" -o "$INSTALL_DIR/claude-docs-helper.sh" 2>/dev/null; then
         chmod +x "$INSTALL_DIR/claude-docs-helper.sh"
         echo "  ✓ Helper script downloaded directly"
     else
@@ -417,7 +418,7 @@ fi
 
 # Create simplified docs command
 cat > ~/.claude/commands/docs.md << 'EOF'
-Execute the Claude Code Docs helper script at ~/.claude-code-docs/claude-docs-helper.sh
+Execute the Claude Documentation helper script at ~/.claude-docs/claude-docs-helper.sh
 
 Usage:
 - /docs - List all available documentation topics
@@ -425,12 +426,13 @@ Usage:
 - /docs -t - Check sync status without reading a doc
 - /docs -t <topic> - Check freshness then read documentation
 - /docs whats new - Show recent documentation changes (or "what's new")
+- /docs changelog - Read Claude Code release notes
 
 Examples of expected output:
 
 When reading a doc:
-📚 COMMUNITY MIRROR: https://github.com/ericbuess/claude-code-docs
-📖 OFFICIAL DOCS: https://docs.anthropic.com/en/docs/claude-code
+📚 COMMUNITY MIRROR: https://github.com/kreitter/claude-docs
+📖 OFFICIAL DOCS: https://docs.anthropic.com
 
 [Doc content here...]
 
@@ -440,19 +442,19 @@ When showing what's new:
 📚 Recent documentation updates:
 
 • 5 hours ago:
-  📎 https://github.com/ericbuess/claude-code-docs/commit/eacd8e1
+  📎 https://github.com/kreitter/claude-docs/commit/eacd8e1
   📄 data-usage: https://docs.anthropic.com/en/docs/claude-code/data-usage
      ➕ Added: Privacy safeguards
   📄 security: https://docs.anthropic.com/en/docs/claude-code/security
      ✨ Data flow and dependencies section moved here
 
-📎 Full changelog: https://github.com/ericbuess/claude-code-docs/commits/main/docs
+📎 Full changelog: https://github.com/kreitter/claude-docs/commits/main/docs
 📚 COMMUNITY MIRROR - NOT AFFILIATED WITH ANTHROPIC
 
 Every request checks for the latest documentation from GitHub (takes ~0.4s).
 The helper script handles all functionality including auto-updates.
 
-Execute: ~/.claude-code-docs/claude-docs-helper.sh "$ARGUMENTS"
+Execute: ~/.claude-docs/claude-docs-helper.sh "$ARGUMENTS"
 EOF
 
 echo "✓ Created /docs command"
@@ -461,15 +463,15 @@ echo "✓ Created /docs command"
 echo "Setting up automatic updates..."
 
 # Simple hook that just calls the helper script
-HOOK_COMMAND="~/.claude-code-docs/claude-docs-helper.sh hook-check"
+HOOK_COMMAND="~/.claude-docs/claude-docs-helper.sh hook-check"
 
 if [ -f ~/.claude/settings.json ]; then
     # Update existing settings.json
     echo "  Updating Claude settings..."
-    
-    # First remove ALL hooks that contain "claude-code-docs" anywhere in the command
-    # This catches old installations at any path
-    jq '.hooks.PreToolUse = [(.hooks.PreToolUse // [])[] | select(.hooks[0].command | contains("claude-code-docs") | not)]' ~/.claude/settings.json > ~/.claude/settings.json.tmp
+
+    # First remove ALL hooks that contain "claude-code-docs" or "claude-docs" anywhere in the command
+    # This catches old installations at any path and any version
+    jq '.hooks.PreToolUse = [(.hooks.PreToolUse // [])[] | select((.hooks[0]?.command? // "" | contains("claude-code-docs") or contains("claude-docs")) | not)]' ~/.claude/settings.json > ~/.claude/settings.json.tmp
     
     # Then add our new hook
     jq --arg cmd "$HOOK_COMMAND" '.hooks.PreToolUse = [(.hooks.PreToolUse // [])[]] + [{"matcher": "Read", "hooks": [{"type": "command", "command": $cmd}]}]' ~/.claude/settings.json.tmp > ~/.claude/settings.json
@@ -503,10 +505,10 @@ cleanup_old_installations
 
 # Success message
 echo ""
-echo "✅ Claude Code Docs v0.3.3 installed successfully!"
+echo "✅ Claude Docs v1.0.0 installed successfully!"
 echo ""
 echo "📚 Command: /docs (user)"
-echo "📂 Location: ~/.claude-code-docs"
+echo "📂 Location: ~/.claude-docs"
 echo ""
 echo "Usage examples:"
 echo "  /docs hooks         # Read hooks documentation"
