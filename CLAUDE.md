@@ -16,7 +16,7 @@ This repository provides a local mirror of Claude documentation from Anthropic's
 - **Version:** 2.0.0
 - **Installation Location:** `~/.claude-docs` (fixed location for all users)
 - **Previous Location:** `~/.claude-code-docs` (v0.3.x - auto-migrated)
-- **Update Frequency:** GitHub Actions runs every 3 hours to fetch latest docs
+- **Update Frequency:** GitHub Actions runs daily at noon UTC to fetch latest docs
 - **Platform Support:** macOS and Linux (Windows not yet supported)
 
 ## How It Works

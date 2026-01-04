@@ -4,7 +4,7 @@
 [![Last Update](https://img.shields.io/github/last-commit/kreitter/claude-docs/main.svg?label=docs%20updated)](https://github.com/kreitter/claude-docs/commits/main)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue)]()
 
-Local mirror of comprehensive Claude documentation from Anthropic's official sites, updated every 3 hours.
+Local mirror of comprehensive Claude documentation from Anthropic's official sites, updated daily.
 
 **Documentation Sources:**
 - **Claude Code**: https://code.claude.com/docs (Build with Claude Code + Reference docs)
@@ -122,7 +122,7 @@ The changelog feature fetches the latest release notes directly from the officia
 ## How Updates Work
 
 The documentation attempts to stay current:
-- GitHub Actions runs periodically to fetch new documentation
+- GitHub Actions runs daily at noon UTC to fetch new documentation
 - When you use `/docs`, it checks for updates
 - Updates are pulled when available
 - You may see "🔄 Updating documentation..." when this happens
