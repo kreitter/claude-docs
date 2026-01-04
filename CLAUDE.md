@@ -4,9 +4,16 @@
 
 ## Project Overview
 
-This repository provides a local mirror of Claude documentation from https://docs.anthropic.com/, including Claude Code user guides (38 docs) and comprehensive API references (76 docs).
+This repository provides a local mirror of Claude documentation from Anthropic's official documentation sites:
+- **Claude Code docs**: https://code.claude.com/docs (~17 files - Build with Claude Code + Reference categories)
+- **Platform docs**: https://platform.claude.com/docs (~530 files - API reference, Agent SDK, etc.)
 
-- **Version:** 1.0.0
+**Filename Prefixes:**
+- `code__bwc__*` - Build with Claude Code pages (e.g., `code__bwc__hooks-guide.md`)
+- `code__ref__*` - Reference pages (e.g., `code__ref__cli-reference.md`)
+- `platform__*` - Platform/API documentation (e.g., `platform__api__messages.md`)
+
+- **Version:** 2.0.0
 - **Installation Location:** `~/.claude-docs` (fixed location for all users)
 - **Previous Location:** `~/.claude-code-docs` (v0.3.x - auto-migrated)
 - **Update Frequency:** GitHub Actions runs every 3 hours to fetch latest docs
@@ -46,11 +53,11 @@ When users run `/docs`, Claude Code:
 
 ```
 ~/.claude-docs/
-├── docs/                          # Documentation markdown files (116 total)
+├── docs/                          # Documentation markdown files (~550 total)
 │   ├── docs_manifest.json         # Git-tracked, contains hashes and URLs
-│   ├── docs__claude-code__*.md    # Claude Code CLI docs (38 files)
-│   ├── api__*.md                  # API reference docs (76 files)
-│   ├── release-notes__*.md        # Release notes
+│   ├── code__bwc__*.md            # Build with Claude Code docs (~11 files)
+│   ├── code__ref__*.md            # Reference docs (~6 files)
+│   ├── platform__*.md             # Platform/API docs (~530 files)
 │   └── changelog.md               # Claude Code changelog
 ├── scripts/
 │   ├── claude-docs-helper.sh.template  # Template for helper script
@@ -108,7 +115,11 @@ The helper script has intelligent search:
 
 ### Version History Context
 
-- **v1.0.0 (Current):** Production release, renamed to `claude-docs`, path migration to `~/.claude-docs`
+- **v2.0.0 (Current):** Dual-source update - fetches from `code.claude.com` and `platform.claude.com`
+  - New filename prefixes: `code__bwc__*`, `code__ref__*`, `platform__*`
+  - Expanded to ~550 documentation files
+  - Removed sitemap-based discovery, now uses llms.txt
+- **v1.0.0:** Production release, renamed to `claude-docs`, path migration to `~/.claude-docs`
 - **v0.3.3:** Added changelog integration, fixed macOS compatibility
 - **v0.3.2:** Fixed auto-update functionality, improved error recovery
 - **v0.3.1:** Migration to fixed `~/.claude-code-docs` location

@@ -1,31 +1,34 @@
 # Claude Documentation Mirror
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/kreitter/claude-docs/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/kreitter/claude-docs/releases)
 [![Last Update](https://img.shields.io/github/last-commit/kreitter/claude-docs/main.svg?label=docs%20updated)](https://github.com/kreitter/claude-docs/commits/main)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue)]()
 
-Local mirror of comprehensive Claude documentation from https://docs.anthropic.com/, updated every 3 hours.
+Local mirror of comprehensive Claude documentation from Anthropic's official sites, updated every 3 hours.
+
+**Documentation Sources:**
+- **Claude Code**: https://code.claude.com/docs (Build with Claude Code + Reference docs)
+- **Platform**: https://platform.claude.com/docs (API reference, Agent SDK, and more)
 
 **Includes:**
-- 38 Claude Code CLI documentation files
-- 76 API reference documentation files
-- 2 additional files (changelog, release notes)
-- **Total: 116 documentation files**
+- ~17 Claude Code documentation files (Build with Claude Code + Reference categories)
+- ~530 Platform API reference documentation files
+- 1 changelog file (from Claude Code GitHub repository)
+- **Total: ~550 documentation files**
 
-## 🎉 Version 1.0.0 - Production Ready
+## 🎉 Version 2.0.0 - Dual-Source Update
 
 **This release includes:**
+- 🔄 **New documentation sources**: Now fetches from `code.claude.com` and `platform.claude.com`
+- 📚 **Expanded coverage**: Full API reference and Agent SDK documentation
+- 🏷️ **Categorized filenames**: `code__bwc__*`, `code__ref__*`, `platform__*` prefixes
 - ✅ **Production ready**: Stable, tested, comprehensive documentation coverage
-- 📚 **Complete scope**: CLI docs + API docs + release notes
-- 🔄 **Renamed for clarity**: Now accurately reflects comprehensive Claude documentation
-- 🛠️ **Path migration**: Auto-migrates from v0.3.x (`~/.claude-code-docs` → `~/.claude-docs`)
-- 🐛 **Critical fixes**: Installer, uninstaller, and macOS compatibility improvements
 
-**Migrating from v0.3.x:**
+**Migrating from v1.x:**
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kreitter/claude-docs/main/install.sh | bash
 ```
-Your installation will automatically migrate to the new path. No manual action required.
+Your installation will automatically update to the new version. No manual action required.
 
 ## Why This Exists
 
@@ -185,13 +188,17 @@ See [UNINSTALL.md](UNINSTALL.md) for manual uninstall instructions.
 
 See [CHANGELOG.md](CHANGELOG.md) for complete version history.
 
-### v1.0.0 (Current - Production Ready)
+### v2.0.0 (Current - Dual-Source Update)
+- **New documentation sources**: Fetches from `code.claude.com` and `platform.claude.com`
+- **Expanded coverage**: ~550 total files (17 Claude Code + 530 Platform + changelog)
+- **Categorized filenames**: `code__bwc__*`, `code__ref__*`, `platform__*` prefixes
+- **Removed sitemap dependency**: Uses llms.txt for reliable discovery
+- **Production ready**: Stable, tested, ready for daily use
+
+### v1.0.0
 - **Comprehensive scope**: 38 CLI docs + 76 API docs = 116 total files
 - **Path migration**: Auto-migrates `~/.claude-code-docs` → `~/.claude-docs`
 - **Repository**: Now at `kreitter/claude-docs` (fork with enhancements)
-- **Critical fixes**: Installer, uninstaller, macOS compatibility
-- **Accurate naming**: Variables and paths reflect actual scope
-- **Production ready**: Stable, tested, ready for daily use
 
 ### Previous Versions
 - v0.3.x: Claude Code CLI docs only, at ericbuess/claude-code-docs

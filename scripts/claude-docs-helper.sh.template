@@ -24,8 +24,66 @@ sanitize_input() {
 # Function to print documentation header
 print_doc_header() {
     echo "📚 COMMUNITY MIRROR: https://github.com/kreitter/claude-docs"
-    echo "📖 OFFICIAL DOCS: https://docs.anthropic.com"
+    echo "📖 CLAUDE CODE: https://code.claude.com/docs"
+    echo "📖 API DOCS: https://platform.claude.com/docs"
     echo ""
+}
+
+# Determine official URL for a document based on filename prefix
+get_official_url() {
+    local filename="$1"
+
+    if [[ "$filename" == code__bwc__* ]]; then
+        # Build with Claude Code pages
+        local topic="${filename#code__bwc__}"
+        topic="${topic%.md}"  # Remove .md extension
+        echo "https://code.claude.com/docs/en/${topic}"
+
+    elif [[ "$filename" == code__ref__* ]]; then
+        # Reference pages
+        local topic="${filename#code__ref__}"
+        topic="${topic%.md}"
+        echo "https://code.claude.com/docs/en/${topic}"
+
+    elif [[ "$filename" == platform__* ]]; then
+        # Platform docs
+        local topic="${filename#platform__}"
+        topic="${topic%.md}"
+        topic="${topic//__//}"  # Convert __ back to /
+        echo "https://platform.claude.com/docs/en/${topic}"
+
+    else
+        # Legacy/unknown - default to code.claude.com
+        local topic="${filename%.md}"
+        echo "https://code.claude.com/docs/en/${topic}"
+    fi
+}
+
+# Search for document with any valid prefix
+find_doc() {
+    local topic="$1"
+    local doc_dir="$DOCS_PATH/docs"
+
+    # Strip .md extension if user included it
+    topic="${topic%.md}"
+
+    # Try exact match with each prefix
+    for prefix in "code__bwc__" "code__ref__" "platform__"; do
+        local path="$doc_dir/${prefix}${topic}.md"
+        if [[ -f "$path" ]]; then
+            echo "$path"
+            return 0
+        fi
+    done
+
+    # Try platform docs with path separators (user might type api/messages)
+    local platform_path="$doc_dir/platform__${topic/\//__}.md"
+    if [[ -f "$platform_path" ]]; then
+        echo "$platform_path"
+        return 0
+    fi
+
+    return 1
 }
 
 
@@ -121,20 +179,25 @@ show_freshness() {
 # Function to read documentation
 read_doc() {
     local topic=$(sanitize_input "$1")
-    
+
     # Strip .md extension if user included it (they're being helpful!)
     topic="${topic%.md}"
-    
-    local doc_path="$DOCS_PATH/docs/${topic}.md"
-    
-    if [[ -f "$doc_path" ]]; then
+
+    # Use find_doc to locate the document with any valid prefix
+    local doc_path
+    doc_path=$(find_doc "$topic")
+
+    if [[ -n "$doc_path" ]] && [[ -f "$doc_path" ]]; then
         print_doc_header
-        
+
+        # Extract filename for get_official_url
+        local filename=$(basename "$doc_path")
+
         # Quick check if we're up to date (0.37s)
         cd "$DOCS_PATH" 2>/dev/null || exit 1
         local BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
         local VERSION=$SCRIPT_VERSION
-        
+
         # Do the fetch to check status
         local COMPARE_BRANCH="$BRANCH"
         if ! git fetch --quiet origin "$BRANCH" 2>/dev/null; then
@@ -146,24 +209,24 @@ read_doc() {
                 echo ""
                 cat "$doc_path"
                 echo ""
-                echo "📖 Official page: https://docs.anthropic.com/en/docs/claude-code/$topic"
+                echo "📖 Official page: $(get_official_url "$filename")"
                 return
             fi
         fi
-        
+
         local LOCAL=$(git rev-parse HEAD 2>/dev/null)
         local REMOTE=$(git rev-parse origin/"$COMPARE_BRANCH" 2>/dev/null)
         local BEHIND=$(git rev-list HEAD..origin/"$COMPARE_BRANCH" --count 2>/dev/null || echo "0")
-        
+
         if [[ "$LOCAL" != "$REMOTE" ]] && [[ "$BEHIND" -gt 0 ]]; then
             # We're behind - safe to update
             echo "🔄 Updating to latest documentation..."
             git pull --quiet origin "$COMPARE_BRANCH" 2>&1 | grep -v "Merge made by" || true
-            
+
             # Check if installer needs updating
             local INSTALLER_VERSION=$SCRIPT_VERSION
             local VERSION_INT=$(echo "$INSTALLER_VERSION" | sed 's/^0\.//')
-            
+
             if [[ $VERSION_INT -ge 3 ]]; then
                 ./install.sh >/dev/null 2>&1
             fi
@@ -177,13 +240,13 @@ read_doc() {
             fi
         fi
         echo ""
-        
+
         cat "$doc_path"
         echo ""
         if [[ "$topic" == "changelog" ]]; then
             echo "📖 Official source: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md"
         else
-            echo "📖 Official page: https://docs.anthropic.com/en/docs/claude-code/$topic"
+            echo "📖 Official page: $(get_official_url "$filename")"
         fi
     else
         # Always show search interface - never error messages
@@ -269,10 +332,14 @@ whats_new() {
         echo "  📎 https://github.com/kreitter/claude-docs/commit/$hash"
         
         # Show which docs changed
-        local changed_docs=$(git diff-tree --no-commit-id --name-only -r "$hash" -- docs/*.md 2>/dev/null | sed 's|docs/||' | sed 's|\.md$||' | head -5)
+        local changed_docs=$(git diff-tree --no-commit-id --name-only -r "$hash" -- docs/*.md 2>/dev/null | sed 's|docs/||' | head -5)
         if [[ -n "$changed_docs" ]]; then
             echo "$changed_docs" | while read -r doc; do
-                [[ -n "$doc" ]] && echo "  📄 $doc: https://docs.anthropic.com/en/docs/claude-code/$doc"
+                if [[ -n "$doc" ]]; then
+                    local official_url=$(get_official_url "$doc")
+                    local display_name="${doc%.md}"  # Remove .md for display
+                    echo "  📄 $display_name: $official_url"
+                fi
             done
         fi
         echo ""
