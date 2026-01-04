@@ -49,6 +49,15 @@ REFERENCE_PAGES = {
     "hooks", "plugins-reference"
 }
 
+# URL path prefixes to exclude from platform docs fetching
+# These are language-specific SDK docs that we don't need to mirror
+EXCLUDED_PLATFORM_PATH_PREFIXES = (
+    "api/go/",
+    "api/java/",
+    "api/kotlin/",
+    "api/ruby/",
+)
+
 MANIFEST_FILE = "docs_manifest.json"
 
 # Note: Sitemap-based discovery has been removed in v2.0.0
@@ -143,6 +152,11 @@ def url_to_safe_filename(url_path: str, source: str, category: str = None) -> st
     return f"{prefix}__{safe_name}.md"
 
 
+def should_exclude_platform_path(path: str) -> bool:
+    """Check if a platform doc path should be excluded from fetching."""
+    return path.startswith(EXCLUDED_PLATFORM_PATH_PREFIXES)
+
+
 def discover_claude_code_docs(session: requests.Session) -> List[Tuple[str, str, str]]:
     """
     Discover Claude Code docs from llms.txt and categorize them.
@@ -198,12 +212,16 @@ def discover_platform_docs(session: requests.Session) -> List[Tuple[str, str]]:
     pattern = re.compile(r'\[.*?\]\((https://platform\.claude\.com/docs/en/([^)]+\.md))\)')
 
     results = []
+    excluded_count = 0
     for match in pattern.finditer(response.text):
         full_url = match.group(1)
         path = match.group(2)  # e.g., "api/messages.md"
+        if should_exclude_platform_path(path):
+            excluded_count += 1
+            continue
         results.append((full_url, path))
 
-    logger.info(f"Discovered {len(results)} Platform docs")
+    logger.info(f"Discovered {len(results)} Platform docs (excluded {excluded_count} language-specific SDK docs)")
     return results
 
 

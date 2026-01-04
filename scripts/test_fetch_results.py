@@ -195,6 +195,59 @@ class TestChangelog:
 
 
 # =============================================================================
+# Excluded SDK Documentation Tests
+# =============================================================================
+
+# Language-specific SDK docs that should NOT be fetched
+EXCLUDED_SDK_PREFIXES = (
+    "platform__api__go__",
+    "platform__api__java__",
+    "platform__api__kotlin__",
+    "platform__api__ruby__",
+)
+
+
+class TestExcludedSDKDocs:
+    """Tests that excluded language-specific SDK docs are not present.
+
+    These tests verify that Go, Java, Kotlin, and Ruby SDK docs are excluded
+    from fetching. They will FAIL if stale files/manifest entries remain,
+    and PASS after a clean fetch.
+    """
+
+    def test_no_excluded_sdk_files_on_disk(self):
+        """No excluded SDK documentation files should exist on disk."""
+        found_files = []
+        for prefix in EXCLUDED_SDK_PREFIXES:
+            matches = list(DOCS_DIR.glob(f"{prefix}*.md"))
+            found_files.extend([f.name for f in matches])
+
+        assert not found_files, (
+            f"Found {len(found_files)} excluded SDK files on disk that should have been removed: "
+            f"{found_files[:10]}{'...' if len(found_files) > 10 else ''}"
+        )
+
+    def test_no_excluded_sdk_entries_in_manifest(self):
+        """Manifest should not contain entries for excluded SDK docs."""
+        assert MANIFEST_PATH.exists(), "Manifest does not exist"
+
+        with open(MANIFEST_PATH) as f:
+            manifest = json.load(f)
+
+        excluded_entries = []
+        for filename in manifest.get("files", {}).keys():
+            for prefix in EXCLUDED_SDK_PREFIXES:
+                if filename.startswith(prefix):
+                    excluded_entries.append(filename)
+                    break
+
+        assert not excluded_entries, (
+            f"Found {len(excluded_entries)} excluded SDK entries in manifest: "
+            f"{excluded_entries[:10]}{'...' if len(excluded_entries) > 10 else ''}"
+        )
+
+
+# =============================================================================
 # Integrity Tests
 # =============================================================================
 
