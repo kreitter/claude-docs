@@ -66,6 +66,7 @@ Everything that makes Claude Code powerful is available in the SDK:
     | **Grep** | Search file contents with regex |
     | **WebSearch** | Search the web for current information |
     | **WebFetch** | Fetch and parse web page content |
+    | **[AskUserQuestion](/docs/en/agent-sdk/user-input#handle-clarifying-questions)** | Ask the user clarifying questions with multiple choice options |
 
     This example creates an agent that searches your codebase for TODO comments:
 
@@ -260,6 +261,10 @@ Everything that makes Claude Code powerful is available in the SDK:
   <Tab title="Permissions">
     Control exactly which tools your agent can use. Allow safe operations, block dangerous ones, or require approval for sensitive actions.
 
+    <Note>
+    For interactive approval prompts and the `AskUserQuestion` tool, see [Handle approvals and user input](/docs/en/agent-sdk/user-input).
+    </Note>
+
     This example creates a read-only agent that can analyze but not modify code:
 
     <CodeGroup>
@@ -387,9 +392,9 @@ The SDK also supports Claude Code's filesystem-based configuration. To use these
         brew install --cask claude-code
         ```
       </Tab>
-      <Tab title="npm">
-        ```bash
-        npm install -g @anthropic-ai/claude-code
+      <Tab title="WinGet">
+        ```powershell
+        winget install Anthropic.ClaudeCode
         ```
       </Tab>
     </Tabs>
@@ -414,7 +419,7 @@ The SDK also supports Claude Code's filesystem-based configuration. To use these
     ```bash
     export ANTHROPIC_API_KEY=your-api-key
     ```
-    Get your key from the [Console](https://console.anthropic.com/).
+    Get your key from the [Console](https://platform.claude.com/).
 
     The SDK also supports authentication via third-party API providers:
 

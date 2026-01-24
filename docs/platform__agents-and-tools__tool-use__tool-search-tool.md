@@ -18,7 +18,7 @@ The tool search tool is currently in public beta. Include the appropriate [beta 
 | ------------------------ | ------------------------------ | -------------------------------------- |
 | Claude API<br/>Microsoft Foundry  | `advanced-tool-use-2025-11-20` | Claude Opus 4.5<br />Claude Sonnet 4.5 |
 | Google Cloud's Vertex AI | `tool-search-tool-2025-10-19`  | Claude Opus 4.5<br />Claude Sonnet 4.5 |
-| Amazon Bedrock           | `tool-search-tool-2025-10-19`  | Claude Opus 4.5                        |
+| Amazon Bedrock           | `tool-search-tool-2025-10-19`  | Claude Opus 4.5<br />Claude Sonnet 4.5 |
 
 Please reach out through our [feedback form](https://forms.gle/MhcGFFwLxuwnWTkYA) to share your feedback on this feature.
 </Note>
@@ -505,22 +505,25 @@ main();
 
 ## Custom tool search implementation
 
-You can implement your own tool search logic (e.g., using embeddings or semantic search) by returning `tool_reference` blocks from a custom tool:
+You can implement your own tool search logic (e.g., using embeddings or semantic search) by returning `tool_reference` blocks from a custom tool. When Claude calls your custom search tool, return a standard `tool_result` with `tool_reference` blocks in the content array:
 
 ```json JSON
 {
-  "type": "tool_search_tool_result",
-  "tool_use_id": "toolu_custom_search",
-  "content": {
-    "type": "tool_search_tool_search_result",
-    "tool_references": [{ "type": "tool_reference", "tool_name": "discovered_tool_name" }]
-  }
+  "type": "tool_result",
+  "tool_use_id": "toolu_your_tool_id",
+  "content": [
+    { "type": "tool_reference", "tool_name": "discovered_tool_name" }
+  ]
 }
 ```
 
 Every tool referenced must have a corresponding tool definition in the top-level `tools` parameter with `defer_loading: true`. This approach lets you use more sophisticated search algorithms while maintaining compatibility with the tool search system.
 
-For a complete example using embeddings, see our [tool search with embeddings cookbook](https://github.com/anthropics/anthropic-cookbook).
+<Note>
+The `tool_search_tool_result` format shown in the [Response format](#response-format) section is the server-side format used internally by Anthropic's built-in tool search. For custom client-side implementations, always use the standard `tool_result` format with `tool_reference` content blocks as shown above.
+</Note>
+
+For a complete example using embeddings, see our [tool search with embeddings cookbook](https://platform.claude.com/cookbooks).
 
 ## Error handling
 

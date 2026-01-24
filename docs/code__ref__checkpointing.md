@@ -1,3 +1,7 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Checkpointing
 
 > Automatically track and rewind Claude's edits to quickly recover from unwanted changes.
@@ -61,10 +65,5 @@ Checkpoints are designed for quick, session-level recovery. For permanent versio
 ## See also
 
 * [Interactive mode](/en/interactive-mode) - Keyboard shortcuts and session controls
-* [Slash commands](/en/slash-commands) - Accessing checkpoints using `/rewind`
+* [Built-in commands](/en/interactive-mode#built-in-commands) - Accessing checkpoints using `/rewind`
 * [CLI reference](/en/cli-reference) - Command-line options
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

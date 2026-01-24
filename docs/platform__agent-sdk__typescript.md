@@ -7,7 +7,7 @@ Complete API reference for the TypeScript Agent SDK, including all functions, ty
 <script src="/components/typescript-sdk-type-links.js" defer />
 
 <Note>
-**Try the new V2 interface (preview):** A simplified interface with `send()` and `receive()` patterns is now available, making multi-turn conversations easier. [Learn more](/docs/en/agent-sdk/typescript-v2-preview)
+**Try the new V2 interface (preview):** A simplified interface with `send()` and `receive()` patterns is now available, making multi-turn conversations easier. [Learn more about the TypeScript V2 preview](/docs/en/agent-sdk/typescript-v2-preview)
 </Note>
 
 ## Installation
@@ -128,7 +128,7 @@ Configuration object for the `query()` function.
 | `settingSources` | [`SettingSource`](#settingsource)`[]` | `[]` (no settings) | Control which filesystem settings to load. When omitted, no settings are loaded. **Note:** Must include `'project'` to load CLAUDE.md files |
 | `stderr` | `(data: string) => void` | `undefined` | Callback for stderr output |
 | `strictMcpConfig` | `boolean` | `false` | Enforce strict MCP validation |
-| `systemPrompt` | `string \| { type: 'preset'; preset: 'claude_code'; append?: string }` | `undefined` (empty prompt) | System prompt configuration. Pass a string for custom prompt, or `{ type: 'preset', preset: 'claude_code' }` to use Claude Code's system prompt. When using the preset object form, add `append` to extend the system prompt with additional instructions |
+| `systemPrompt` | `string \| { type: 'preset'; preset: 'claude_code'; append?: string }` | `undefined` (minimal prompt) | System prompt configuration. Pass a string for custom prompt, or `{ type: 'preset', preset: 'claude_code' }` to use Claude Code's system prompt. When using the preset object form, add `append` to extend the system prompt with additional instructions |
 | `tools` | `string[] \| { type: 'preset'; preset: 'claude_code' }` | `undefined` | Tool configuration. Pass an array of tool names or use the preset to get Claude Code's default tools |
 
 ### `Query`
@@ -916,7 +916,7 @@ interface AskUserQuestionInput {
 }
 ```
 
-Asks the user clarifying questions during execution. See [Handling the AskUserQuestion Tool](/docs/en/agent-sdk/permissions#handling-the-askuserquestion-tool) for usage details.
+Asks the user clarifying questions during execution. See [Handle approvals and user input](/docs/en/agent-sdk/user-input#handle-clarifying-questions) for usage details.
 
 ### Bash
 
@@ -2071,15 +2071,17 @@ const result = await query({
     sandbox: {
       enabled: true,
       autoAllowBashIfSandboxed: true,
-      excludedCommands: ["docker"],
       network: {
-        allowLocalBinding: true,
-        allowUnixSockets: ["/var/run/docker.sock"]
+        allowLocalBinding: true
       }
     }
   }
 });
 ```
+
+<Warning>
+**Unix socket security**: The `allowUnixSockets` option can grant access to powerful system services. For example, allowing `/var/run/docker.sock` effectively grants full host system access through the Docker API, bypassing sandbox isolation. Only allow Unix sockets that are strictly necessary and understand the security implications of each.
+</Warning>
 
 ### `NetworkSandboxSettings`
 
@@ -2163,6 +2165,8 @@ This pattern enables you to:
 
 <Warning>
 Commands running with `dangerouslyDisableSandbox: true` have full system access. Ensure your `canUseTool` handler validates these requests carefully.
+
+If `permissionMode` is set to `bypassPermissions` and `allowUnsandboxedCommands` is enabled, the model can autonomously execute commands outside the sandbox without any approval prompts. This combination effectively allows the model to escape sandbox isolation silently.
 </Warning>
 
 ## See also

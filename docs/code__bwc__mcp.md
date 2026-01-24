@@ -1,3 +1,7 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Claude Code to tools via MCP
 
 > Learn how to connect Claude Code to your tools with the Model Context Protocol.
@@ -37,8 +41,12 @@ export const MCPServersTable = ({platform = "all"}) => {
             mcpConnector: worksWith.includes('claude-api'),
             claudeDesktop: worksWith.includes('claude-desktop')
           };
-          const remoteUrl = server.remotes?.[0]?.url || meta.url;
-          const remoteType = server.remotes?.[0]?.type;
+          const remotes = server.remotes || [];
+          const httpRemote = remotes.find(r => r.type === 'streamable-http');
+          const sseRemote = remotes.find(r => r.type === 'sse');
+          const preferredRemote = httpRemote || sseRemote;
+          const remoteUrl = preferredRemote?.url || meta.url;
+          const remoteType = preferredRemote?.type;
           const isTemplatedUrl = remoteUrl?.includes('{');
           let setupUrl;
           if (isTemplatedUrl && meta.requiredFields) {
@@ -277,21 +285,22 @@ Stdio servers run as local processes on your machine. They're ideal for tools th
 
 ```bash  theme={null}
 # Basic syntax
-claude mcp add --transport stdio <name> <command> [args...]
+claude mcp add [options] <name> -- <command> [args...]
 
 # Real example: Add Airtable server
-claude mcp add --transport stdio airtable --env AIRTABLE_API_KEY=YOUR_KEY \
+claude mcp add --transport stdio --env AIRTABLE_API_KEY=YOUR_KEY airtable \
   -- npx -y airtable-mcp-server
 ```
 
 <Note>
-  **Understanding the "--" parameter:**
-  The `--` (double dash) separates Claude's own CLI flags from the command and arguments that get passed to the MCP server. Everything before `--` are options for Claude (like `--env`, `--scope`), and everything after `--` is the actual command to run the MCP server.
+  **Important: Option ordering**
+
+  All options (`--transport`, `--env`, `--scope`, `--header`) must come **before** the server name. The `--` (double dash) then separates the server name from the command and arguments that get passed to the MCP server.
 
   For example:
 
   * `claude mcp add --transport stdio myserver -- npx server` → runs `npx server`
-  * `claude mcp add --transport stdio myserver --env KEY=value -- python server.py --port 8080` → runs `python server.py --port 8080` with `KEY=value` in environment
+  * `claude mcp add --transport stdio --env KEY=value myserver -- python server.py --port 8080` → runs `python server.py --port 8080` with `KEY=value` in environment
 
   This prevents conflicts between Claude's flags and the server's flags.
 </Note>
@@ -313,6 +322,10 @@ claude mcp remove github
 # (within Claude Code) Check server status
 /mcp
 ```
+
+### Dynamic tool updates
+
+Claude Code supports MCP `list_changed` notifications, allowing MCP servers to dynamically update their available tools, prompts, and resources without requiring you to disconnect and reconnect. When an MCP server sends a `list_changed` notification, Claude Code automatically refreshes the available capabilities from that server.
 
 <Tip>
   Tips:
@@ -411,6 +424,10 @@ MCP servers can be configured at three different scope levels, each serving dist
 
 Local-scoped servers represent the default configuration level and are stored in `~/.claude.json` under your project's path. These servers remain private to you and are only accessible when working within the current project directory. This scope is ideal for personal development servers, experimental configurations, or servers containing sensitive credentials that shouldn't be shared.
 
+<Note>
+  The term "local scope" for MCP servers differs from general local settings. MCP local-scoped servers are stored in `~/.claude.json` (your home directory), while general local settings use `.claude/settings.local.json` (in the project directory). See [Settings](/en/settings#settings-files) for details on settings file locations.
+</Note>
+
 ```bash  theme={null}
 # Add a local-scoped server (default)
 claude mcp add --transport http stripe https://mcp.stripe.com
@@ -466,7 +483,7 @@ Select your scope based on:
 
   * **User and local scope**: `~/.claude.json` (in the `mcpServers` field or under project paths)
   * **Project scope**: `.mcp.json` in your project root (checked into source control)
-  * **Enterprise managed**: `managed-mcp.json` in system directories (see [Enterprise MCP configuration](#enterprise-mcp-configuration))
+  * **Managed**: `managed-mcp.json` in system directories (see [Managed MCP configuration](#managed-mcp-configuration))
 </Note>
 
 ### Scope hierarchy and precedence
@@ -792,9 +809,65 @@ MCP servers can expose resources that you can reference using @ mentions, simila
   * Resources can contain any type of content that the MCP server provides (text, JSON, structured data, etc.)
 </Tip>
 
-## Use MCP prompts as slash commands
+## Scale with MCP Tool Search
 
-MCP servers can expose prompts that become available as slash commands in Claude Code.
+When you have many MCP servers configured, tool definitions can consume a significant portion of your context window. MCP Tool Search solves this by dynamically loading tools on-demand instead of preloading all of them.
+
+### How it works
+
+Claude Code automatically enables Tool Search when your MCP tool descriptions would consume more than 10% of the context window. You can [adjust this threshold](#configure-tool-search) or disable tool search entirely. When triggered:
+
+1. MCP tools are deferred rather than loaded into context upfront
+2. Claude uses a search tool to discover relevant MCP tools when needed
+3. Only the tools Claude actually needs are loaded into context
+4. MCP tools continue to work exactly as before from your perspective
+
+### For MCP server authors
+
+If you're building an MCP server, the server instructions field becomes more useful with Tool Search enabled. Server instructions help Claude understand when to search for your tools, similar to how [skills](/en/skills) work.
+
+Add clear, descriptive server instructions that explain:
+
+* What category of tasks your tools handle
+* When Claude should search for your tools
+* Key capabilities your server provides
+
+### Configure tool search
+
+Tool search runs in auto mode by default, meaning it activates only when your MCP tool definitions exceed the context threshold. If you have few tools, they load normally without tool search. This feature requires models that support `tool_reference` blocks: Sonnet 4 and later, or Opus 4 and later. Haiku models do not support tool search.
+
+Control tool search behavior with the `ENABLE_TOOL_SEARCH` environment variable:
+
+| Value      | Behavior                                                                           |
+| :--------- | :--------------------------------------------------------------------------------- |
+| `auto`     | Activates when MCP tools exceed 10% of context (default)                           |
+| `auto:<N>` | Activates at custom threshold, where `<N>` is a percentage (e.g., `auto:5` for 5%) |
+| `true`     | Always enabled                                                                     |
+| `false`    | Disabled, all MCP tools loaded upfront                                             |
+
+```bash  theme={null}
+# Use a custom 5% threshold
+ENABLE_TOOL_SEARCH=auto:5 claude
+
+# Disable tool search entirely
+ENABLE_TOOL_SEARCH=false claude
+```
+
+Or set the value in your [settings.json `env` field](/en/settings#available-settings).
+
+You can also disable the MCPSearch tool specifically using the `disallowedTools` setting:
+
+```json  theme={null}
+{
+  "permissions": {
+    "deny": ["MCPSearch"]
+  }
+}
+```
+
+## Use MCP prompts as commands
+
+MCP servers can expose prompts that become available as commands in Claude Code.
 
 ### Execute MCP prompts
 
@@ -831,9 +904,9 @@ MCP servers can expose prompts that become available as slash commands in Claude
   * Server and prompt names are normalized (spaces become underscores)
 </Tip>
 
-## Enterprise MCP configuration
+## Managed MCP configuration
 
-For organizations that need centralized control over MCP servers, Claude Code supports two enterprise configuration options:
+For organizations that need centralized control over MCP servers, Claude Code supports two configuration options:
 
 1. **Exclusive control with `managed-mcp.json`**: Deploy a fixed set of MCP servers that users cannot modify or extend
 2. **Policy-based control with allowlists/denylists**: Allow users to add their own servers, but restrict which ones are permitted
@@ -1051,15 +1124,10 @@ URL patterns support wildcards using `*` to match any sequence of characters. Th
 
 #### Important notes
 
-* **Option 1 and Option 2 can be combined**: If `managed-mcp.json` exists, it has exclusive control and users cannot add servers. Allowlists/denylists still apply to the enterprise servers themselves.
+* **Option 1 and Option 2 can be combined**: If `managed-mcp.json` exists, it has exclusive control and users cannot add servers. Allowlists/denylists still apply to the managed servers themselves.
 * **Denylist takes absolute precedence**: If a server matches a denylist entry (by name, command, or URL), it will be blocked even if it's on the allowlist
 * Name-based, command-based, and URL-based restrictions work together: a server passes if it matches **either** a name entry, a command entry, or a URL pattern (unless blocked by denylist)
 
 <Note>
-  **When using `managed-mcp.json`**: Users cannot add MCP servers through `claude mcp add` or configuration files. The `allowedMcpServers` and `deniedMcpServers` settings still apply to filter which enterprise servers are actually loaded.
+  **When using `managed-mcp.json`**: Users cannot add MCP servers through `claude mcp add` or configuration files. The `allowedMcpServers` and `deniedMcpServers` settings still apply to filter which managed servers are actually loaded.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

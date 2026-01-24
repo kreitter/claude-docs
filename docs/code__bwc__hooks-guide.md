@@ -1,3 +1,7 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get started with Claude Code hooks
 
 > Learn how to customize and extend Claude Code's behavior by registering shell commands
@@ -47,6 +51,7 @@ workflow:
 * **Stop**: Runs when Claude Code finishes responding
 * **SubagentStop**: Runs when subagent tasks complete
 * **PreCompact**: Runs before Claude Code is about to run a compact operation
+* **Setup**: Runs when Claude Code is invoked with `--init`, `--init-only`, or `--maintenance` flags
 * **SessionStart**: Runs when Claude Code starts a new session or resumes an existing session
 * **SessionEnd**: Runs when Claude Code session ends
 
@@ -64,7 +69,7 @@ Install `jq` for JSON processing in the command line.
 
 ### Step 1: Open hooks configuration
 
-Run the `/hooks` [slash command](/en/slash-commands) and select
+Run the `/hooks` command and select
 the `PreToolUse` hook event.
 
 `PreToolUse` hooks run before tool calls and can block them while providing
@@ -331,8 +336,3 @@ Block edits to sensitive files:
 * For comprehensive security best practices and safety guidelines, see [Security Considerations](/en/hooks#security-considerations) in the hooks reference documentation.
 * For troubleshooting steps and debugging techniques, see [Debugging](/en/hooks#debugging) in the hooks reference
   documentation.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

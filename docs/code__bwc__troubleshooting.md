@@ -1,3 +1,7 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
 > Discover solutions to common issues with Claude Code installation and usage.
@@ -53,6 +57,26 @@ export PATH="$HOME/.nvm/versions/node/$(node -v)/bin:$PATH"
   Avoid disabling Windows PATH importing (`appendWindowsPath = false`) as this breaks the ability to call Windows executables from WSL. Similarly, avoid uninstalling Node.js from Windows if you use it for Windows development.
 </Warning>
 
+### WSL2 sandbox setup
+
+[Sandboxing](/en/sandboxing) is supported on WSL2 but requires installing additional packages. If you see an error like "Sandbox requires socat and bubblewrap" when running `/sandbox`, install the dependencies:
+
+<Tabs>
+  <Tab title="Ubuntu/Debian">
+    ```bash  theme={null}
+    sudo apt-get install bubblewrap socat
+    ```
+  </Tab>
+
+  <Tab title="Fedora">
+    ```bash  theme={null}
+    sudo dnf install bubblewrap socat
+    ```
+  </Tab>
+</Tabs>
+
+WSL1 does not support sandboxing. If you see "Sandboxing requires WSL2", you need to upgrade to WSL2 or run Claude Code without sandboxing.
+
 ### Linux and Mac installation issues: permission or command not found errors
 
 When installing Claude Code with npm, `PATH` problems may prevent access to `claude`.
@@ -91,11 +115,46 @@ irm https://claude.ai/install.ps1 | iex
 
 ```
 
-This command installs the appropriate build of Claude Code for your operating system and architecture and adds a symlink to the installation at `~/.local/bin/claude`.
+This command installs the appropriate build of Claude Code for your operating system and architecture and adds a symlink to the installation at `~/.local/bin/claude` (or `%USERPROFILE%\.local\bin\claude.exe` on Windows).
 
 <Tip>
   Make sure that you have the installation directory in your system PATH.
 </Tip>
+
+### Windows: "Claude Code on Windows requires git-bash"
+
+Claude Code on native Windows requires [Git for Windows](https://git-scm.com/downloads/win) which includes Git Bash. If Git is installed but not detected:
+
+1. Set the path explicitly in PowerShell before running Claude:
+   ```powershell  theme={null}
+   $env:CLAUDE_CODE_GIT_BASH_PATH="C:\Program Files\Git\bin\bash.exe"
+   ```
+
+2. Or add it to your system environment variables permanently through System Properties → Environment Variables.
+
+If Git is installed in a non-standard location, adjust the path accordingly.
+
+### Windows: "installMethod is native, but claude command not found"
+
+If you see this error after installation, the `claude` command isn't in your PATH. Add it manually:
+
+<Steps>
+  <Step title="Open Environment Variables">
+    Press `Win + R`, type `sysdm.cpl`, and press Enter. Click **Advanced** → **Environment Variables**.
+  </Step>
+
+  <Step title="Edit User PATH">
+    Under "User variables", select **Path** and click **Edit**. Click **New** and add:
+
+    ```
+    %USERPROFILE%\.local\bin
+    ```
+  </Step>
+
+  <Step title="Restart your terminal">
+    Close and reopen PowerShell or CMD for changes to take effect.
+  </Step>
+</Steps>
 
 Verify installation:
 
@@ -118,6 +177,8 @@ If you're experiencing authentication problems:
 2. Close Claude Code
 3. Restart with `claude` and complete the authentication process again
 
+If the browser doesn't open automatically during login, press `c` to copy the OAuth URL to your clipboard, then paste it into your browser manually.
+
 If problems persist, try:
 
 ```bash  theme={null}
@@ -131,23 +192,23 @@ This removes your stored authentication information and forces a clean login.
 
 Claude Code stores configuration in several locations:
 
-| File                          | Purpose                                                                |
-| :---------------------------- | :--------------------------------------------------------------------- |
-| `~/.claude/settings.json`     | User settings (permissions, hooks, model overrides)                    |
-| `.claude/settings.json`       | Project settings (checked into source control)                         |
-| `.claude/settings.local.json` | Local project settings (not committed)                                 |
-| `~/.claude.json`              | Global state (theme, OAuth, MCP servers, allowed tools)                |
-| `.mcp.json`                   | Project MCP servers (checked into source control)                      |
-| `managed-settings.json`       | [Enterprise managed settings](/en/settings#settings-files)             |
-| `managed-mcp.json`            | [Enterprise managed MCP servers](/en/mcp#enterprise-mcp-configuration) |
+| File                          | Purpose                                                  |
+| :---------------------------- | :------------------------------------------------------- |
+| `~/.claude/settings.json`     | User settings (permissions, hooks, model overrides)      |
+| `.claude/settings.json`       | Project settings (checked into source control)           |
+| `.claude/settings.local.json` | Local project settings (not committed)                   |
+| `~/.claude.json`              | Global state (theme, OAuth, MCP servers)                 |
+| `.mcp.json`                   | Project MCP servers (checked into source control)        |
+| `managed-settings.json`       | [Managed settings](/en/settings#settings-files)          |
+| `managed-mcp.json`            | [Managed MCP servers](/en/mcp#managed-mcp-configuration) |
 
 On Windows, `~` refers to your user home directory, such as `C:\Users\YourName`.
 
-**Enterprise managed file locations:**
+**Managed file locations:**
 
 * macOS: `/Library/Application Support/ClaudeCode/`
 * Linux/WSL: `/etc/claude-code/`
-* Windows: `C:\ProgramData\ClaudeCode\`
+* Windows: `C:\Program Files\ClaudeCode\`
 
 For details on configuring these files, see [Settings](/en/settings) and [MCP](/en/mcp).
 
@@ -166,7 +227,7 @@ rm .mcp.json
 ```
 
 <Warning>
-  This will remove all your settings, allowed tools, MCP server configurations, and session history.
+  This will remove all your settings, MCP server configurations, and session history.
 </Warning>
 
 ## Performance and stability
@@ -188,7 +249,7 @@ If Claude Code seems unresponsive:
 
 ### Search and discovery issues
 
-If Search tool, `@file` mentions, custom agents, and custom slash commands aren't working, install system `ripgrep`:
+If Search tool, `@file` mentions, custom agents, and custom skills aren't working, install system `ripgrep`:
 
 ```bash  theme={null}
 # macOS (Homebrew)  
@@ -352,10 +413,12 @@ If you're experiencing issues not covered here:
 
 1. Use the `/bug` command within Claude Code to report problems directly to Anthropic
 2. Check the [GitHub repository](https://github.com/anthropics/claude-code) for known issues
-3. Run `/doctor` to check the health of your Claude Code installation
+3. Run `/doctor` to diagnose issues. It checks:
+   * Installation type, version, and search functionality
+   * Auto-update status and available versions
+   * Invalid settings files (malformed JSON, incorrect types)
+   * MCP server configuration errors
+   * Keybinding configuration problems
+   * Context usage warnings (large CLAUDE.md files, high MCP token usage, unreachable permission rules)
+   * Plugin and agent loading errors
 4. Ask Claude directly about its capabilities and features - Claude has built-in access to its documentation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt
