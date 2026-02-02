@@ -43,24 +43,24 @@
     "code__ref__hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "b0bd7363c123224e76da393c12af219fced510c566cc8626bc05e617181baecd",
-      "last_updated": "2026-01-31T12:05:58.536065",
+      "hash": "3d2c336a6ce920128e87777b1dc8e1edd289621b9d0b5026361d97f5f58d69f9",
+      "last_updated": "2026-02-02T12:09:23.845228",
       "source": "code.claude.com",
       "category": "ref"
     },
     "code__bwc__hooks-guide.md": {
       "original_url": "https://code.claude.com/docs/en/hooks-guide",
       "original_md_url": "https://code.claude.com/docs/en/hooks-guide.md",
-      "hash": "be435222a4572da5bc9a503aaf4a4a5d0fb22e43e4bd66f21b8a9ced1a99add9",
-      "last_updated": "2026-01-31T12:05:59.105269",
+      "hash": "1f52c5f3dabd84f7f626e3ccd0fbb0d84946a481bacb3b3d7904aa5999807e1b",
+      "last_updated": "2026-02-02T12:09:24.419879",
       "source": "code.claude.com",
       "category": "bwc"
     },
     "code__ref__interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "95700823f78d873e8bb523d284e9115496517cae16c93f29ac27b5f55fc86b3a",
-      "last_updated": "2026-01-31T12:05:59.676958",
+      "hash": "6c327c0f22c77f828c6cf9790581cdd0bce3a9dd1f5dad85b14bb33b8ea9342d",
+      "last_updated": "2026-02-02T12:09:24.996169",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -2594,8 +2594,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-01T12:10:02.282216",
-    "fetch_duration_seconds": 224.01976,
+    "last_fetch_completed": "2026-02-02T12:13:05.623205",
+    "fetch_duration_seconds": 224.937247,
     "total_pages_discovered": 370,
     "pages_fetched_successfully": 368,
     "pages_failed": 3,
@@ -2615,7 +2615,7 @@
     "total_files": 368,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-01T12:10:02.282241",
+  "last_updated": "2026-02-02T12:13:05.623230",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
