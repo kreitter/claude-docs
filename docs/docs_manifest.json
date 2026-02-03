@@ -11,8 +11,8 @@
     "code__ref__cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
-      "hash": "d7cf3886dec61877db68b563386a0cde5cbab8a6a3b162836f1eb1374fd7107f",
-      "last_updated": "2026-01-31T12:05:56.193174",
+      "hash": "41720a93ea9901c1c6afc87922568ff0aff0e7a7db66497d1eb4876ca8c70d4c",
+      "last_updated": "2026-02-03T12:09:31.490976",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -43,8 +43,8 @@
     "code__ref__hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "3d2c336a6ce920128e87777b1dc8e1edd289621b9d0b5026361d97f5f58d69f9",
-      "last_updated": "2026-02-02T12:09:23.845228",
+      "hash": "14203ea013e63f172b46eb53010385fdd390e61f1ae0d9abb2e22e6e49b1a935",
+      "last_updated": "2026-02-03T12:09:33.739976",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -59,8 +59,8 @@
     "code__ref__interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "6c327c0f22c77f828c6cf9790581cdd0bce3a9dd1f5dad85b14bb33b8ea9342d",
-      "last_updated": "2026-02-02T12:09:24.996169",
+      "hash": "96a768fba4795b9d76e32cb160808c5577cac4aea8050d130a0dd76bb4db5846",
+      "last_updated": "2026-02-03T12:09:34.896747",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -107,24 +107,24 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "693c21dbe6a4aa431bcef3924ccf34417492948316eada4e978a05ff68e8b7ce",
-      "last_updated": "2026-01-31T12:06:03.104864",
+      "hash": "d3d4ba2e83a719c66162c61dd82fc935445c8f22707f544f51d2ed4e3b0eb556",
+      "last_updated": "2026-02-03T12:09:38.379850",
       "source": "code.claude.com",
       "category": "bwc"
     },
     "code__bwc__sub-agents.md": {
       "original_url": "https://code.claude.com/docs/en/sub-agents",
       "original_md_url": "https://code.claude.com/docs/en/sub-agents.md",
-      "hash": "51eddbd0cc26281d2a78dd656684d8d67cde4271f66d2003acf502b1890377bc",
-      "last_updated": "2026-01-31T12:06:03.673922",
+      "hash": "f717cc83d98e95231bd952584c9462c035f0ff4bfce08e1923b9c8c0c71c64ac",
+      "last_updated": "2026-02-03T12:09:38.942912",
       "source": "code.claude.com",
       "category": "bwc"
     },
     "code__bwc__troubleshooting.md": {
       "original_url": "https://code.claude.com/docs/en/troubleshooting",
       "original_md_url": "https://code.claude.com/docs/en/troubleshooting.md",
-      "hash": "7d52de4f8cbf7c6061cedef72f858aab721d37cc237abcc153647e515acf7fe3",
-      "last_updated": "2026-01-31T12:06:04.253738",
+      "hash": "01985d5f0eb1ac3344db08ffb6ff3c5851dfbd50a78c1004772ee5b9542ac53a",
+      "last_updated": "2026-02-03T12:09:39.516575",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -2525,8 +2525,8 @@
     "platform__release-notes__system-prompts.md": {
       "original_url": "https://platform.claude.com/docs/en/release-notes/system-prompts",
       "original_md_url": "https://platform.claude.com/docs/en/release-notes/system-prompts.md",
-      "hash": "8377ee2de42da290b8e675e67a2e434c1d79ba39a5cf41d47459555160f8e4fc",
-      "last_updated": "2026-01-03T16:41:38.375490",
+      "hash": "8bf6d2baabd201e06e21e61fc8a35e1bb31796507aec7d2c3519676c0b8ea534",
+      "last_updated": "2026-02-03T12:13:17.823101",
       "source": "platform.claude.com"
     },
     "platform__about-claude__use-case-guides__ticket-routing.md": {
@@ -2594,8 +2594,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-02T12:13:05.623205",
-    "fetch_duration_seconds": 224.937247,
+    "last_fetch_completed": "2026-02-03T12:13:23.301912",
+    "fetch_duration_seconds": 232.553629,
     "total_pages_discovered": 370,
     "pages_fetched_successfully": 368,
     "pages_failed": 3,
@@ -2615,7 +2615,7 @@
     "total_files": 368,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-02T12:13:05.623230",
+  "last_updated": "2026-02-03T12:13:23.301938",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
