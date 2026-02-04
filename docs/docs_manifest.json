@@ -11,8 +11,8 @@
     "code__ref__cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
-      "hash": "41720a93ea9901c1c6afc87922568ff0aff0e7a7db66497d1eb4876ca8c70d4c",
-      "last_updated": "2026-02-03T12:09:31.490976",
+      "hash": "c644207fa4464455f178e848cc2fb9228e7d13282b9a55d9776935b668522ace",
+      "last_updated": "2026-02-04T12:09:09.772472",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -833,6 +833,13 @@
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/workspaces.md",
       "hash": "7196ce596dea74eac1c5f58c9f9a14ef6184c777b4ea97657c131dda34e9f15a",
       "last_updated": "2026-01-24T20:52:50.664924",
+      "source": "platform.claude.com"
+    },
+    "platform__build-with-claude__zero-data-retention.md": {
+      "original_url": "https://platform.claude.com/docs/en/build-with-claude/zero-data-retention",
+      "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/zero-data-retention.md",
+      "hash": "e3bef4a7cad0316969d50e17c3a6519180a257413c086305c4dcb3edddf0cd19",
+      "last_updated": "2026-02-04T12:10:23.028806",
       "source": "platform.claude.com"
     },
     "platform__api__overview.md": {
@@ -2588,16 +2595,16 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "2f365e81df58f8e576cfa25630ab32cebc7fec72bc7a630a8cc9244aab3e6037",
-      "last_updated": "2026-02-01T12:10:02.281776",
+      "hash": "619c2bff768ab0833be4503a91ccb6587eadb4c9ee6dc08c5467aa91672e2057",
+      "last_updated": "2026-02-04T12:13:04.039241",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-03T12:13:23.301912",
-    "fetch_duration_seconds": 232.553629,
-    "total_pages_discovered": 370,
-    "pages_fetched_successfully": 368,
+    "last_fetch_completed": "2026-02-04T12:13:04.039616",
+    "fetch_duration_seconds": 235.119015,
+    "total_pages_discovered": 371,
+    "pages_fetched_successfully": 369,
     "pages_failed": 3,
     "failed_pages": [
       "platform:about-claude/use-case-guides/overview.md",
@@ -2606,16 +2613,16 @@
     ],
     "discovery_methods": [
       "code.claude.com(16 pages)",
-      "platform.claude.com(354 pages)"
+      "platform.claude.com(355 pages)"
     ],
     "sources": {
       "code_claude_com": "https://code.claude.com/docs",
       "platform_claude_com": "https://platform.claude.com/docs"
     },
-    "total_files": 368,
+    "total_files": 369,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-03T12:13:23.301938",
+  "last_updated": "2026-02-04T12:13:04.039635",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
