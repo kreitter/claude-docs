@@ -2679,14 +2679,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "e11f7c44375c2d1f7cf5044f276145810a1719c253561b5c95c94db4a45648e6",
-      "last_updated": "2026-02-08T12:10:12.034636",
+      "hash": "b9c607caff01a70336979edb9c53c324a8784d6c9bba3da72e46ed751dbf8733",
+      "last_updated": "2026-02-10T12:20:26.076564",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-09T12:17:58.781167",
-    "fetch_duration_seconds": 233.16646,
+    "last_fetch_completed": "2026-02-10T12:20:26.076986",
+    "fetch_duration_seconds": 236.377677,
     "total_pages_discovered": 383,
     "pages_fetched_successfully": 381,
     "pages_failed": 3,
@@ -2706,7 +2706,7 @@
     "total_files": 381,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-09T12:17:58.781193",
+  "last_updated": "2026-02-10T12:20:26.077006",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
