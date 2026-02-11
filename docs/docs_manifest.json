@@ -194,8 +194,8 @@
     "platform__agents-and-tools__tool-use__overview.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview.md",
-      "hash": "0fc52903e3aa79a497248113d7a69ca24b7a58ed2331b14be05b35b9c91341b0",
-      "last_updated": "2026-02-06T12:09:57.230376",
+      "hash": "d4e0bee6e1001fed262ef2739aa570717125313c5d5b65858c7df56e20787ed0",
+      "last_updated": "2026-02-11T12:14:59.845865",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__adaptive-thinking.md": {
@@ -327,8 +327,8 @@
     "platform__build-with-claude__compaction.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/compaction.md",
-      "hash": "3135e1363f3a772c4a1c01db53b2ebdb7c86e47d4f22bf8604dd0950761d4ee4",
-      "last_updated": "2026-02-06T12:10:08.824426",
+      "hash": "d1f745682143f2d4346d5d5dfe82addfe4b612452231b54c2eb950a249445c8e",
+      "last_updated": "2026-02-11T12:15:12.574933",
       "source": "platform.claude.com"
     },
     "platform__agents-and-tools__tool-use__computer-use-tool.md": {
@@ -460,8 +460,8 @@
     "platform__build-with-claude__handling-stop-reasons.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons.md",
-      "hash": "998432382d9c86772ad6478c31c6470c53f305ca14c3f2680c2f52f9b39e77a9",
-      "last_updated": "2026-02-06T12:10:19.637850",
+      "hash": "6671ae21b548f32ca778776439bbc56c96d8b4b58dc66454b5af87fe15c8e7cf",
+      "last_updated": "2026-02-11T12:15:24.886566",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__stop-reasons.md": {
@@ -2679,14 +2679,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "b9c607caff01a70336979edb9c53c324a8784d6c9bba3da72e46ed751dbf8733",
-      "last_updated": "2026-02-10T12:20:26.076564",
+      "hash": "531db70ac2d7e314c7c7ff3398dbf95d631dcd7cf9a4cbe17ea8b7c65026c93b",
+      "last_updated": "2026-02-11T12:18:56.354965",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-10T12:20:26.076986",
-    "fetch_duration_seconds": 236.377677,
+    "last_fetch_completed": "2026-02-11T12:18:56.355301",
+    "fetch_duration_seconds": 252.645206,
     "total_pages_discovered": 383,
     "pages_fetched_successfully": 381,
     "pages_failed": 3,
@@ -2706,7 +2706,7 @@
     "total_files": 381,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-10T12:20:26.077006",
+  "last_updated": "2026-02-11T12:18:56.355320",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
