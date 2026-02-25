@@ -11,8 +11,8 @@
     "code__ref__cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
-      "hash": "bfed35696d38da3a9bd3b0f841584365ec35fa80dc78d468bee924d1e6278700",
-      "last_updated": "2026-02-22T12:05:52.857609",
+      "hash": "10e3bf47a00984aa4b1f3674636cd6f9016f7052fa82ec124b23984af61a508b",
+      "last_updated": "2026-02-25T12:11:39.129690",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -83,8 +83,8 @@
     "code__bwc__plugin-marketplaces.md": {
       "original_url": "https://code.claude.com/docs/en/plugin-marketplaces",
       "original_md_url": "https://code.claude.com/docs/en/plugin-marketplaces.md",
-      "hash": "94fb2a5dfb4ec30419b7d06b64a1c70e0fa5a0fc791e8cbf99ad476877792664",
-      "last_updated": "2026-02-17T12:11:21.796704",
+      "hash": "434276f348993c4c61a5f1e983160c55ecbacb9b8ce0f175761b9cd5b7ab0147",
+      "last_updated": "2026-02-25T12:11:44.366972",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -99,32 +99,32 @@
     "code__ref__plugins-reference.md": {
       "original_url": "https://code.claude.com/docs/en/plugins-reference",
       "original_md_url": "https://code.claude.com/docs/en/plugins-reference.md",
-      "hash": "1150acf0d3a6c57526ffa113a2497cbdbb575ebec1f4cba2e1fa69b807e4e52f",
-      "last_updated": "2026-02-20T12:09:28.175894",
+      "hash": "fac659949a1342ca9c00e11b20786263bec2c7bcbea99f2210f8c02786696f8c",
+      "last_updated": "2026-02-25T12:11:45.522052",
       "source": "code.claude.com",
       "category": "ref"
     },
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "04885f27ebe84bd7cec927824c7fb25a0f82086c89c57c51bc020d0b44aaef8e",
-      "last_updated": "2026-02-07T12:06:17.058389",
+      "hash": "e21950b60996815aae70e14f701d4f905ad8456528870d2188c0e81415556f65",
+      "last_updated": "2026-02-25T12:11:46.110981",
       "source": "code.claude.com",
       "category": "bwc"
     },
     "code__bwc__sub-agents.md": {
       "original_url": "https://code.claude.com/docs/en/sub-agents",
       "original_md_url": "https://code.claude.com/docs/en/sub-agents.md",
-      "hash": "c734da2d86aad97ac48c644f15a03a9ebbf90a5fd73eb0eeb8b6af02a42953fe",
-      "last_updated": "2026-02-22T12:06:00.286839",
+      "hash": "1444193f7ed4923c7aa52cc4b6d327a86d88d9eed5363663d748a2a74763a666",
+      "last_updated": "2026-02-25T12:11:46.709759",
       "source": "code.claude.com",
       "category": "bwc"
     },
     "code__bwc__troubleshooting.md": {
       "original_url": "https://code.claude.com/docs/en/troubleshooting",
       "original_md_url": "https://code.claude.com/docs/en/troubleshooting.md",
-      "hash": "01985d5f0eb1ac3344db08ffb6ff3c5851dfbd50a78c1004772ee5b9542ac53a",
-      "last_updated": "2026-02-03T12:09:39.516575",
+      "hash": "91d24c1801a23ce69622834fe9aac9d90cb434805efae9fc35d86632693ffbb3",
+      "last_updated": "2026-02-25T12:11:47.327765",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -2896,14 +2896,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "150c3373285b93d586c0b06093ffb218e83dad5d2e9e406910b2b6f4761a4818",
-      "last_updated": "2026-02-24T12:17:42.642737",
+      "hash": "36531f920100ee16721e3c449d39cf8cea75d876a018256b83c1db0244627b43",
+      "last_updated": "2026-02-25T12:16:51.377156",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-24T12:17:42.644403",
-    "fetch_duration_seconds": 304.31101,
+    "last_fetch_completed": "2026-02-25T12:16:51.377725",
+    "fetch_duration_seconds": 313.178099,
     "total_pages_discovered": 551,
     "pages_fetched_successfully": 412,
     "pages_failed": 140,
@@ -3060,7 +3060,7 @@
     "total_files": 412,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-24T12:17:42.644422",
+  "last_updated": "2026-02-25T12:16:51.377747",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
