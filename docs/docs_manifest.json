@@ -43,8 +43,8 @@
     "code__ref__hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "db70fffe8813b67f2bf9ba24e75eae1c164b54c20fb2d36ae4e87f5ef151cf8f",
-      "last_updated": "2026-02-27T12:08:52.812507",
+      "hash": "a3ed0f0746a37dfe6ae484413a160f1d799b276555ec762227c25280895641c3",
+      "last_updated": "2026-02-28T12:05:45.487189",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -215,15 +215,15 @@
     "platform__agent-sdk__python.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/python",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/python.md",
-      "hash": "483b2d987ba19a5bb939a0bf7fba6ee88da6125baec7125957097afc230d7c5e",
-      "last_updated": "2026-02-27T12:09:07.184737",
+      "hash": "84d6ae201ec26729cdc188adfeef3c4b35c44e9785e8f176fbd13aa8afa5f0c0",
+      "last_updated": "2026-02-28T12:05:59.229324",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__typescript.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/typescript",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/typescript.md",
-      "hash": "cf0603edb70e96bd1f7aaa475b75a367b59ac3a5581d66218b69890c7bb7f29e",
-      "last_updated": "2026-02-27T12:09:07.763693",
+      "hash": "0ae2ac29f283f8b79fe4173eebef0c75fe964cd26967462bf19e98a5366d8fd8",
+      "last_updated": "2026-02-28T12:05:59.847319",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__skills.md": {
@@ -334,8 +334,8 @@
     "platform__build-with-claude__prompt-engineering__prompting-tools.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-tools",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-tools.md",
-      "hash": "1c794315956d5c41353092db3093dfcc63a4dda3466f5efc303fa463d5a6adca",
-      "last_updated": "2026-02-24T12:13:05.924605",
+      "hash": "c3f4b8f1cc7d81a29daddd109c1d6c86af4cbc4e625e97cc16e3bef669960776",
+      "last_updated": "2026-02-28T12:06:09.791675",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__context-editing.md": {
@@ -460,8 +460,8 @@
     "platform__agent-sdk__hooks.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/hooks",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/hooks.md",
-      "hash": "8873be8ad0539a48e9e300915eea0e59573986650ad67d1fe0299c0b5c80f372",
-      "last_updated": "2026-02-27T12:09:29.152114",
+      "hash": "b33c733831e8be5685571de320e06cf5636d84fe6888425da67f8ac0d3ef86c3",
+      "last_updated": "2026-02-28T12:06:20.847705",
       "source": "platform.claude.com"
     },
     "platform__agents-and-tools__mcp-connector.md": {
@@ -551,8 +551,8 @@
     "platform__build-with-claude__prompt-caching.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching.md",
-      "hash": "cc2f389c58fe45252ed98e0822e9fdf4b8ba20e168126e086da4b133666246bb",
-      "last_updated": "2026-02-27T12:09:37.076336",
+      "hash": "cbd2cae8b0a3fab383f9581d532f5c89a2b39930f4e612c7726163f7c6722ea2",
+      "last_updated": "2026-02-28T12:06:28.986002",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__prompt-engineering__claude-prompting-best-practices.md": {
@@ -670,8 +670,8 @@
     "platform__build-with-claude__structured-outputs.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs.md",
-      "hash": "409d68f103fe50b81ac57a95710424b8700168f34b2cccec141507140a4d4c12",
-      "last_updated": "2026-02-26T12:13:34.548515",
+      "hash": "230f646c663cda0dc4af26d3d3a6201cf80b110a06ca7443d5d035a2735b1ee9",
+      "last_updated": "2026-02-28T12:06:39.350574",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__subagents.md": {
@@ -789,8 +789,8 @@
     "platform__build-with-claude__zero-data-retention.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/zero-data-retention",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/zero-data-retention.md",
-      "hash": "590d2b6a3a956e4aa7190163def06b8e217c6c91f98a7e2ef73b8e622a5d53ee",
-      "last_updated": "2026-02-21T12:06:56.708132",
+      "hash": "24cf3eaf9af3f8723443d105c217b394185540680283b76129e5c22695133e2c",
+      "last_updated": "2026-02-28T12:06:49.849177",
       "source": "platform.claude.com"
     },
     "platform__api__overview.md": {
@@ -2896,14 +2896,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "0dbcffc022d198ac50c38b7d07451f1a1175491f6b2f4d3e441224d42aea2d59",
-      "last_updated": "2026-02-27T12:13:48.635635",
+      "hash": "6a6ecfffdd99d5043da7b7970a9eb87cd69270e6e1fa83926cd413d1fd9f1b3b",
+      "last_updated": "2026-02-28T12:10:40.766688",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-02-27T12:13:48.635988",
-    "fetch_duration_seconds": 299.076557,
+    "last_fetch_completed": "2026-02-28T12:10:40.767132",
+    "fetch_duration_seconds": 298.334212,
     "total_pages_discovered": 551,
     "pages_fetched_successfully": 412,
     "pages_failed": 140,
@@ -3060,7 +3060,7 @@
     "total_files": 412,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-02-27T12:13:48.636005",
+  "last_updated": "2026-02-28T12:10:40.767150",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
