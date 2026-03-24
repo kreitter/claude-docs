@@ -83,8 +83,8 @@
     "code__bwc__plugin-marketplaces.md": {
       "original_url": "https://code.claude.com/docs/en/plugin-marketplaces",
       "original_md_url": "https://code.claude.com/docs/en/plugin-marketplaces.md",
-      "hash": "48ed00a91032e4e37e31be6d67be1967749d84d69a7714571693241f3089d7ea",
-      "last_updated": "2026-03-21T12:05:49.071809",
+      "hash": "6168e4f8ef56b93633b75c283eb3f9d481572d671110a6a99f6dff1e495f4361",
+      "last_updated": "2026-03-24T12:14:48.802559",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -215,15 +215,15 @@
     "platform__agent-sdk__python.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/python",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/python.md",
-      "hash": "9f513f1154a930a2bd176d0b96b5b2547a29dfbb3377dfb6cd7c2e1d41aa2dfd",
-      "last_updated": "2026-03-14T12:07:17.035237",
+      "hash": "018b8ec2a0c9da28f888cb9b33b4849167983ce9c0bb711f38e7631fc2186443",
+      "last_updated": "2026-03-24T12:15:00.048590",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__typescript.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/typescript",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/typescript.md",
-      "hash": "ff33e85ab91f95874ea685bbdf52a96f9bbc565781a195365216000d9a0232f2",
-      "last_updated": "2026-03-14T12:07:17.629923",
+      "hash": "8e48a990a1d2730ab813851fd350abd4006fe78d1ba3573081e84a011e7f7a53",
+      "last_updated": "2026-03-24T12:15:00.680760",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__skills.md": {
@@ -327,8 +327,8 @@
     "platform__agent-sdk__mcp.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/mcp",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/mcp.md",
-      "hash": "ca09a5daef76363f8509cb958455841c07aa91c9183a07efbe618a629a6108fe",
-      "last_updated": "2026-03-08T12:06:16.665295",
+      "hash": "5d14acb6084469798cd0fa2c56f495bf595eaae07afa82a51647601edce6d5a3",
+      "last_updated": "2026-03-24T12:15:10.121313",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__prompt-engineering__prompting-tools.md": {
@@ -341,8 +341,8 @@
     "platform__build-with-claude__context-editing.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/context-editing.md",
-      "hash": "fde9ce1ce92685ff0e58df5443cc6b09cc80f0434ed5b154063f57793572f1c3",
-      "last_updated": "2026-03-22T12:06:46.986736",
+      "hash": "b53de0eff1a569c25b5aea8d8db2417c5432f798a2e1a885fd203d7aa4ab6be3",
+      "last_updated": "2026-03-24T12:15:11.312113",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__context-windows.md": {
@@ -350,13 +350,6 @@
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/context-windows.md",
       "hash": "2890fb0fa4399acdc8d9898af3ce81d5c205b02aecbe065b0e71728a854fff0c",
       "last_updated": "2026-03-14T12:07:29.274557",
-      "source": "platform.claude.com"
-    },
-    "platform__agent-sdk__custom-tools.md": {
-      "original_url": "https://platform.claude.com/docs/en/agent-sdk/custom-tools",
-      "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/custom-tools.md",
-      "hash": "9ec8013ef1a26daf9c2b09ec7dbe9f4b7703735234190e2285be57885db6c9d9",
-      "last_updated": "2026-02-26T12:13:07.107116",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__data-residency.md": {
@@ -415,11 +408,18 @@
       "last_updated": "2026-02-26T12:13:11.827068",
       "source": "platform.claude.com"
     },
+    "platform__agent-sdk__custom-tools.md": {
+      "original_url": "https://platform.claude.com/docs/en/agent-sdk/custom-tools",
+      "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/custom-tools.md",
+      "hash": "b15d4fd831df1692c6515296cc219e6258f4d298e7cbb04472b2b24c103b356f",
+      "last_updated": "2026-03-24T12:15:17.612132",
+      "source": "platform.claude.com"
+    },
     "platform__agent-sdk__user-input.md": {
       "original_url": "https://platform.claude.com/docs/en/agent-sdk/user-input",
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/user-input.md",
-      "hash": "45ca422f0af0ca77cfc46fb0d816159ecd89e6a01a01dc951e61408a488425dd",
-      "last_updated": "2026-03-11T12:10:25.509103",
+      "hash": "e6e173cbbad614a83010b94dd4bfdc103a8c32b1828331c2063cf4980e3557cf",
+      "last_updated": "2026-03-24T12:15:18.243764",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__handling-stop-reasons.md": {
@@ -595,6 +595,13 @@
       "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/file-checkpointing.md",
       "hash": "f4d49daddd5f4173c5f223c678e6a7aa6841960105d2ba77e57f075b3c5f87ac",
       "last_updated": "2026-03-03T12:10:11.363904",
+      "source": "platform.claude.com"
+    },
+    "platform__agent-sdk__tool-search.md": {
+      "original_url": "https://platform.claude.com/docs/en/agent-sdk/tool-search",
+      "original_md_url": "https://platform.claude.com/docs/en/agent-sdk/tool-search.md",
+      "hash": "cf80a6490afc1e57b5920a08d5d418a6eef651090d0a46c37e917bafecb0d308",
+      "last_updated": "2026-03-24T12:15:34.874083",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__search-results.md": {
@@ -2461,10 +2468,10 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-03-23T12:18:32.836062",
-    "fetch_duration_seconds": 273.533598,
-    "total_pages_discovered": 487,
-    "pages_fetched_successfully": 349,
+    "last_fetch_completed": "2026-03-24T12:19:00.048576",
+    "fetch_duration_seconds": 257.658985,
+    "total_pages_discovered": 488,
+    "pages_fetched_successfully": 350,
     "pages_failed": 139,
     "failed_pages": [
       "platform:api/cli/beta/messages/batches.md",
@@ -2609,16 +2616,16 @@
     ],
     "discovery_methods": [
       "code.claude.com(16 pages)",
-      "platform.claude.com(471 pages)"
+      "platform.claude.com(472 pages)"
     ],
     "sources": {
       "code_claude_com": "https://code.claude.com/docs",
       "platform_claude_com": "https://platform.claude.com/docs"
     },
-    "total_files": 349,
+    "total_files": 350,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-03-23T12:18:32.836088",
+  "last_updated": "2026-03-24T12:19:00.048601",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
