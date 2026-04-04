@@ -35,8 +35,8 @@
     "code__bwc__headless.md": {
       "original_url": "https://code.claude.com/docs/en/headless",
       "original_md_url": "https://code.claude.com/docs/en/headless.md",
-      "hash": "33ba27b6bd42db5e981d55f470ee1eac40e4c2b45d36a9e5b6e24805ecf46669",
-      "last_updated": "2026-03-23T12:14:01.754039",
+      "hash": "2960850eed7fc9a4a5b4aa3c3a4cf9024b56517d49f7148d17d5ac5d8e963a0c",
+      "last_updated": "2026-04-04T12:08:53.295918",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -115,8 +115,8 @@
     "code__bwc__sub-agents.md": {
       "original_url": "https://code.claude.com/docs/en/sub-agents",
       "original_md_url": "https://code.claude.com/docs/en/sub-agents.md",
-      "hash": "233ce9e6fbf6e487727e4d6ab7db62478fc3e7227322ad594d19be4bcac47eda",
-      "last_updated": "2026-04-03T12:11:57.417363",
+      "hash": "3a548045d93ff854bd29427de573a09abfdbf930d139c22a1f624745e69a916b",
+      "last_updated": "2026-04-04T12:08:59.234985",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -838,8 +838,8 @@
     "platform__build-with-claude__skills-guide.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md",
-      "hash": "169b2d0aa2e7e4a2f1e6cb24866e1deea4a46595f0c9332d0fd86aa28b582b10",
-      "last_updated": "2026-03-27T12:14:57.283784",
+      "hash": "4b465dc6cbe05bc7a5401a035fb0d26183fcbc9653a0db12bb96b19ccb69f729",
+      "last_updated": "2026-04-04T12:10:01.884569",
       "source": "platform.claude.com"
     },
     "platform__test-and-evaluate__eval-tool.md": {
@@ -2553,14 +2553,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "4903626b02fe4974d5ffc25bc65a2198640d58cb38b52173659e768a34de2cd2",
-      "last_updated": "2026-04-03T12:16:19.340273",
+      "hash": "3e794ab599dcef7e540f5c86c89f994bbc2003813a3839c360ba0bb0bf618976",
+      "last_updated": "2026-04-04T12:13:04.909812",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-03T12:16:19.340698",
-    "fetch_duration_seconds": 270.289018,
+    "last_fetch_completed": "2026-04-04T12:13:04.910212",
+    "fetch_duration_seconds": 254.159532,
     "total_pages_discovered": 501,
     "pages_fetched_successfully": 363,
     "pages_failed": 139,
@@ -2716,7 +2716,7 @@
     "total_files": 363,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-03T12:16:19.340721",
+  "last_updated": "2026-04-04T12:13:04.910232",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
