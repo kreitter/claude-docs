@@ -11,8 +11,8 @@
     "code__ref__cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
-      "hash": "4cfbecfc1af2fbfa57b606b68174289e594991a908eb14ea26f5b401da20bfc3",
-      "last_updated": "2026-04-02T12:16:46.415088",
+      "hash": "fc2feb45850d29107d29a574cefac6d69473e6393e77e210cc3380d07de0e183",
+      "last_updated": "2026-04-05T12:09:02.276329",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -59,16 +59,16 @@
     "code__ref__interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "8bb8c4a8f0b710ea4ea05c6610b8fc08a96c4e09506f012381bc946beb0235e0",
-      "last_updated": "2026-04-03T12:11:53.315929",
+      "hash": "34c35f5a18a5605513bae4715047055d63bbad76c7cc26fcff9ddc819c942114",
+      "last_updated": "2026-04-05T12:09:05.762135",
       "source": "code.claude.com",
       "category": "ref"
     },
     "code__bwc__mcp.md": {
       "original_url": "https://code.claude.com/docs/en/mcp",
       "original_md_url": "https://code.claude.com/docs/en/mcp.md",
-      "hash": "4f022d05cee933cd70d33b8a439b1f0beb63db3c6ee3db680cb0c103ac39cf5d",
-      "last_updated": "2026-04-03T12:11:53.892291",
+      "hash": "eadae5848c052ba4a21b5e1e3e414a1f1a28558850e12b7c3a824451a9ef8c97",
+      "last_updated": "2026-04-05T12:09:06.337814",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -107,8 +107,8 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "e8ac43c89b84dfadc483fe51bb8c72c831b6f647ebd47c0de1fa520fa43bee82",
-      "last_updated": "2026-04-03T12:11:56.829180",
+      "hash": "62c3e6b4d975c38c9229d9a8cc51a4b3ae7c21a24287d6e1a83924e00e6ffd5c",
+      "last_updated": "2026-04-05T12:09:09.256374",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -123,8 +123,8 @@
     "code__bwc__troubleshooting.md": {
       "original_url": "https://code.claude.com/docs/en/troubleshooting",
       "original_md_url": "https://code.claude.com/docs/en/troubleshooting.md",
-      "hash": "788289eca67b3eca5834946283af31d6905b9520c29024ea95891646545afa96",
-      "last_updated": "2026-04-03T12:11:58.006643",
+      "hash": "083d42b5f693a0ea5db315464e1066a743a4bd5b998b1313d8a0e47e919b3ad8",
+      "last_updated": "2026-04-05T12:09:10.415159",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -2559,8 +2559,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-04T12:13:04.910212",
-    "fetch_duration_seconds": 254.159532,
+    "last_fetch_completed": "2026-04-05T12:13:29.612744",
+    "fetch_duration_seconds": 268.164821,
     "total_pages_discovered": 501,
     "pages_fetched_successfully": 363,
     "pages_failed": 139,
@@ -2716,7 +2716,7 @@
     "total_files": 363,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-04T12:13:04.910232",
+  "last_updated": "2026-04-05T12:13:29.612769",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
