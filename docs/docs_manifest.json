@@ -201,8 +201,8 @@
     "platform__build-with-claude__adaptive-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking.md",
-      "hash": "04ae7a0536984c4a129c8702ca6d2c3f8ef7ea8e36f5e038a1e5b8f79a63eea9",
-      "last_updated": "2026-03-27T12:14:01.635544",
+      "hash": "a2ce9c3775170f4f4c7958d09cad6a28a1a8dc3d5e088f89d0aaa720e1171586",
+      "last_updated": "2026-04-07T12:17:38.621918",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__administration-api.md": {
@@ -390,8 +390,8 @@
     "platform__build-with-claude__effort.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/effort",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/effort.md",
-      "hash": "8fd5ec7fcf35d542a772b0a7dde16e7b7e6a39d1c32f74cf4ea1b4ad026320dd",
-      "last_updated": "2026-03-27T12:14:18.183516",
+      "hash": "a8bc4b56dbb971f2294cf4b2eba00f05419201953e1fe32d44464cff8bded206",
+      "last_updated": "2026-04-07T12:17:56.641979",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__embeddings.md": {
@@ -481,8 +481,8 @@
     "platform__test-and-evaluate__strengthen-guardrails__increase-consistency.md": {
       "original_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/increase-consistency",
       "original_md_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/increase-consistency.md",
-      "hash": "e26fa9f1c3e9324e37d53e78325e930d6a74f304c683a5bc3cecd31b5f55ab78",
-      "last_updated": "2026-02-24T12:13:16.271658",
+      "hash": "d47b5652ef2c3e362d5735abdbb3a6882e0b2aa598d4415bc47429e6f7364888",
+      "last_updated": "2026-04-07T12:18:04.937689",
       "source": "platform.claude.com"
     },
     "platform__agent-sdk__hooks.md": {
@@ -614,8 +614,8 @@
     "platform__test-and-evaluate__strengthen-guardrails__reduce-prompt-leak.md": {
       "original_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak",
       "original_md_url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak.md",
-      "hash": "8d518ed7799004d6ba5f115d691441935ad98be5fd7650eba4475e90a310f32d",
-      "last_updated": "2026-02-24T12:13:26.744809",
+      "hash": "5c47eaaeea354aa7d36abd4b7e36dd6afc2ca7f3b44b97e44a099ba1bc571dc5",
+      "last_updated": "2026-04-07T12:18:16.822887",
       "source": "platform.claude.com"
     },
     "platform__test-and-evaluate__strengthen-guardrails__reduce-latency.md": {
@@ -852,8 +852,8 @@
     "platform__build-with-claude__working-with-messages.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages.md",
-      "hash": "c9a9490dfbdfc72c7ec03400971890a70f9be469920fba8433d516101a3b43bd",
-      "last_updated": "2026-03-27T12:14:58.528677",
+      "hash": "3c7652292608f6acbe31600027a77e4e3705c09e85745f2ebe0f698911c6a7f1",
+      "last_updated": "2026-04-07T12:18:38.179346",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__vision.md": {
@@ -2559,8 +2559,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-06T12:20:03.693278",
-    "fetch_duration_seconds": 268.28044,
+    "last_fetch_completed": "2026-04-07T12:21:52.112663",
+    "fetch_duration_seconds": 269.819838,
     "total_pages_discovered": 501,
     "pages_fetched_successfully": 363,
     "pages_failed": 139,
@@ -2716,7 +2716,7 @@
     "total_files": 363,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-06T12:20:03.693301",
+  "last_updated": "2026-04-07T12:21:52.112686",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
