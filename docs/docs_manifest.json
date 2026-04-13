@@ -215,8 +215,8 @@
     "platform__managed-agents__files.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/files",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/files.md",
-      "hash": "43ad1f8588da809c165dc706c9dd4e52cf912e8368dffc65a97bdae565859db6",
-      "last_updated": "2026-04-09T12:19:25.079945",
+      "hash": "b505fffa4ff5b00cf1fa9fa88c95d7fa4e32f928e93394cb1a933e4159cdc29c",
+      "last_updated": "2026-04-13T12:21:44.355324",
       "source": "platform.claude.com"
     },
     "platform__agents-and-tools__tool-use__advisor-tool.md": {
@@ -4365,8 +4365,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-12T12:17:12.276984",
-    "fetch_duration_seconds": 419.839765,
+    "last_fetch_completed": "2026-04-13T12:29:11.838712",
+    "fetch_duration_seconds": 465.083733,
     "total_pages_discovered": 806,
     "pages_fetched_successfully": 621,
     "pages_failed": 186,
@@ -4569,7 +4569,7 @@
     "total_files": 621,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-12T12:17:12.277012",
+  "last_updated": "2026-04-13T12:29:11.838736",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
