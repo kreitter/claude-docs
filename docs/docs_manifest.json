@@ -59,8 +59,8 @@
     "code__ref__interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "d3f614abf7f534e0a6a264c7ee6d915fff15da07267c82411ee763453e5569b4",
-      "last_updated": "2026-04-17T12:18:11.169149",
+      "hash": "fe95f0f2f26f4d07e17157e91f9655278863544a87346134f3c514de9416c684",
+      "last_updated": "2026-04-19T12:09:53.963685",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -4596,8 +4596,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-18T12:18:13.803600",
-    "fetch_duration_seconds": 476.362307,
+    "last_fetch_completed": "2026-04-19T12:18:10.980169",
+    "fetch_duration_seconds": 501.245474,
     "total_pages_discovered": 858,
     "pages_fetched_successfully": 654,
     "pages_failed": 205,
@@ -4819,7 +4819,7 @@
     "total_files": 654,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-18T12:18:13.803623",
+  "last_updated": "2026-04-19T12:18:10.980195",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
