@@ -107,8 +107,8 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "8904aefafb695007cc2c73809750508675cc6be4655992ee8f8b726370176795",
-      "last_updated": "2026-04-22T12:20:15.158951",
+      "hash": "382b48aed37e52e7ff8a58cb22a3c877833709c8011666715ac735c051fa8a90",
+      "last_updated": "2026-04-26T12:14:11.935803",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -733,8 +733,8 @@
     "platform__managed-agents__memory.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/memory",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/memory.md",
-      "hash": "b05a093281b1801f61165d165e3a05f0245ff12a33e47c0ae93ac006536adcfb",
-      "last_updated": "2026-04-25T12:13:09.457868",
+      "hash": "e08b227feac56c2a2bb676430c7d00c51a5857bb8b732bd28725dacf63e4059d",
+      "last_updated": "2026-04-26T12:15:07.973694",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__skills-guide.md": {
@@ -5093,8 +5093,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-25T12:20:25.995446",
-    "fetch_duration_seconds": 497.16748,
+    "last_fetch_completed": "2026-04-26T12:22:57.761700",
+    "fetch_duration_seconds": 533.069365,
     "total_pages_discovered": 951,
     "pages_fetched_successfully": 725,
     "pages_failed": 227,
@@ -5338,7 +5338,7 @@
     "total_files": 725,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-25T12:20:25.995496",
+  "last_updated": "2026-04-26T12:22:57.761727",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
