@@ -107,8 +107,8 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "6ba9c9619505f62d06d6dad80f789ed3da77b38bf723929e2f79a6aad28d5d23",
-      "last_updated": "2026-04-28T12:34:21.484821",
+      "hash": "b2cd68c996a08bac62ebce129a7140001ef13f91ee3b737cb197cc3c17e6da5c",
+      "last_updated": "2026-04-30T12:30:49.065258",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -243,15 +243,15 @@
     "platform__build-with-claude__batch-processing.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/batch-processing.md",
-      "hash": "58f98b40649a4a8725125470b6c70111ebf47f07d370a0db92ae69e094cd7789",
-      "last_updated": "2026-04-17T12:18:27.494654",
+      "hash": "1ab5e511651501f90271e82e9d6d86b35be91858d820b95fa2bebf39853297b2",
+      "last_updated": "2026-04-30T12:31:01.056356",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__extended-thinking.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking.md",
-      "hash": "5d5dd52d3584411f5fc61807d49ba5f310d74c970e2d31c8e06a2b6dbe07dfe2",
-      "last_updated": "2026-04-28T12:34:33.886146",
+      "hash": "e0548bf64651cacc151de50979fb042737bd1bd54a2fecada9a3adb2ae9f090f",
+      "last_updated": "2026-04-30T12:31:01.670606",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__citations.md": {
@@ -523,8 +523,8 @@
     "platform__build-with-claude__prompt-caching.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching.md",
-      "hash": "b45a13992fa80e6e4faafd65bdd8e2f51e35e5fa30f8cea8055ac7e1ba61ccd3",
-      "last_updated": "2026-04-28T12:34:57.989130",
+      "hash": "5af2b7eebbe67ae875a28056843d69562b79c8175fab8298e1dad0386d77a109",
+      "last_updated": "2026-04-30T12:31:26.059061",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__prompt-engineering__claude-prompting-best-practices.md": {
@@ -5093,8 +5093,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-04-29T12:39:17.969391",
-    "fetch_duration_seconds": 517.365987,
+    "last_fetch_completed": "2026-04-30T12:39:25.218052",
+    "fetch_duration_seconds": 523.557828,
     "total_pages_discovered": 951,
     "pages_fetched_successfully": 725,
     "pages_failed": 227,
@@ -5338,7 +5338,7 @@
     "total_files": 725,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-04-29T12:39:17.969412",
+  "last_updated": "2026-04-30T12:39:25.218076",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
