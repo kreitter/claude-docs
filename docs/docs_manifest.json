@@ -67,8 +67,8 @@
     "code__bwc__mcp.md": {
       "original_url": "https://code.claude.com/docs/en/mcp",
       "original_md_url": "https://code.claude.com/docs/en/mcp.md",
-      "hash": "a6031469b08fdb57755aa01a6f0b336723252a008d7362725fe5acdcfa07ad83",
-      "last_updated": "2026-06-04T13:00:57.311860",
+      "hash": "227e1e98031a7189d6be6f1a6141d02cc7344485983a642d707043a202b63b86",
+      "last_updated": "2026-06-05T12:58:28.379791",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -159,8 +159,8 @@
     "platform__intro.md": {
       "original_url": "https://platform.claude.com/docs/en/intro",
       "original_md_url": "https://platform.claude.com/docs/en/intro.md",
-      "hash": "8a77c99461ef9472f4467329cf0b0481f0a277983ad270516d084823677a14cd",
-      "last_updated": "2026-06-03T13:34:10.275573",
+      "hash": "cfdd56a992d7fbb0ca3ccff53f30c8d9a1db9025630a2f91b604172ca6aed37d",
+      "last_updated": "2026-06-05T12:58:38.931815",
       "source": "platform.claude.com"
     },
     "platform__agents-and-tools__mcp-tunnels__overview.md": {
@@ -243,8 +243,8 @@
     "platform__build-with-claude__citations.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/citations",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/citations.md",
-      "hash": "41f25f1401e65894126cab0cf9a1ff085ca3631711ebc0931cbfcb086bb6ff46",
-      "last_updated": "2026-05-29T13:02:54.281304",
+      "hash": "b5b4ef4578c5170d37990b8822e74aa5e529fb27f9d7f1ae634d06bec8e108ff",
+      "last_updated": "2026-06-05T12:58:46.544596",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__claude-in-amazon-bedrock.md": {
@@ -285,8 +285,8 @@
     "platform__agents-and-tools__tool-use__code-execution-tool.md": {
       "original_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
       "original_md_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool.md",
-      "hash": "0f6f573379f9ee608d976230de9c705ab1ad2da4ce96c71198b102e4a7067f59",
-      "last_updated": "2026-06-03T13:34:21.211056",
+      "hash": "c28234271b5a0867efe37460f49ef918a1c167b4d1777c0b05418e9fb4bf702c",
+      "last_updated": "2026-06-05T12:58:50.370200",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__compaction.md": {
@@ -719,8 +719,8 @@
     "platform__managed-agents__dreams.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/dreams",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/dreams.md",
-      "hash": "beac7eefaa4f7781fe079e197ea2347ac9ed6b7971ec9193d0bb225c5347c5db",
-      "last_updated": "2026-05-29T13:03:36.943962",
+      "hash": "5912bf73d285517a8dbcb5c732b362a14dbb89443c67be4eba943eaafbaa366a",
+      "last_updated": "2026-06-05T12:59:32.139113",
       "source": "platform.claude.com"
     },
     "platform__managed-agents__mcp-connector.md": {
@@ -908,8 +908,8 @@
     "platform__manage-claude__compliance-api-access.md": {
       "original_url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access",
       "original_md_url": "https://platform.claude.com/docs/en/manage-claude/compliance-api-access.md",
-      "hash": "ff30e0d0427ca5adb58f5120a8db375254270938f9879f3bf2de908697b48f32",
-      "last_updated": "2026-05-19T13:03:16.550666",
+      "hash": "0169a7a1edebcab3733587716c350d713a7307fcb2c69a28ebced75dab353066",
+      "last_updated": "2026-06-05T12:59:49.210652",
       "source": "platform.claude.com"
     },
     "platform__manage-claude__compliance-errors.md": {
@@ -7278,14 +7278,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "55e7caa2dd0d4317bd784dffd75dacc033f6e6ad70573f2fb1a1a21d56fa37f9",
-      "last_updated": "2026-06-04T13:13:41.964463",
+      "hash": "4178cb1424105acf4a9011ceaa36b6a316ace3da951ffd0539b68dcd56804492",
+      "last_updated": "2026-06-05T13:10:54.891844",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-06-04T13:13:41.964888",
-    "fetch_duration_seconds": 773.101521,
+    "last_fetch_completed": "2026-06-05T13:10:54.892246",
+    "fetch_duration_seconds": 754.272491,
     "total_pages_discovered": 1174,
     "pages_fetched_successfully": 1038,
     "pages_failed": 137,
@@ -7439,7 +7439,7 @@
     "total_files": 1038,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-06-04T13:13:41.964905",
+  "last_updated": "2026-06-05T13:10:54.892265",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
