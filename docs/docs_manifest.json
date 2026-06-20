@@ -35,8 +35,8 @@
     "code__bwc__headless.md": {
       "original_url": "https://code.claude.com/docs/en/headless",
       "original_md_url": "https://code.claude.com/docs/en/headless.md",
-      "hash": "0b8c5abbca50f3f7e54cf79479f3f23a5f6832139e67576f473bf460db0bc50e",
-      "last_updated": "2026-06-19T13:09:12.846078",
+      "hash": "eb51fa25ea56b8c473f506b394c7bdae5d3ac50352d3b77244d73b42275fdaf2",
+      "last_updated": "2026-06-20T12:34:58.121205",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -67,8 +67,8 @@
     "code__bwc__mcp.md": {
       "original_url": "https://code.claude.com/docs/en/mcp",
       "original_md_url": "https://code.claude.com/docs/en/mcp.md",
-      "hash": "4cfba47a5a895280039dc7a1d0d5bf14dfe2edca54f833a7d933f6390b0e217a",
-      "last_updated": "2026-06-13T12:34:34.543424",
+      "hash": "78272d66f3ba517d06b8837f178548ef1abe125ecacca822f6b29994bff15b47",
+      "last_updated": "2026-06-20T12:35:02.534329",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -341,8 +341,8 @@
     "platform__build-with-claude__effort.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/effort",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/effort.md",
-      "hash": "a9605e82f59721604066f031868d4fe4bd013be6e7b7b7e659d243f91563dd60",
-      "last_updated": "2026-06-10T13:07:08.280898",
+      "hash": "baf31d4be1e4138ccd336581cd9575c16b745f2605325259ca721e080cfde03e",
+      "last_updated": "2026-06-20T12:35:30.068496",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__embeddings.md": {
@@ -446,8 +446,8 @@
     "platform__build-with-claude__multilingual-support.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/multilingual-support",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/multilingual-support.md",
-      "hash": "927a8d368d067796e3e8590e5709f7f57e7f9d924db1b7fdb190305775e9dfb8",
-      "last_updated": "2026-06-16T13:42:47.380694",
+      "hash": "481896f2bb520e9fb4e4f579a71167e53faf3d730c9b88436ac0e5c2ed8327b1",
+      "last_updated": "2026-06-20T12:35:39.773059",
       "source": "platform.claude.com"
     },
     "platform__agents-and-tools__tool-use__parallel-tool-use.md": {
@@ -551,8 +551,8 @@
     "platform__build-with-claude__structured-outputs.md": {
       "original_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
       "original_md_url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs.md",
-      "hash": "832b24b73e2817cc23a3d2e7047d75cb371696b196d0ec901ea3734e12744dd3",
-      "last_updated": "2026-06-12T13:07:24.030195",
+      "hash": "07e57c4e94c471281cb1f8d540b6eda89506435ab227c09f00ec58bf35ac188e",
+      "last_updated": "2026-06-20T12:35:49.538861",
       "source": "platform.claude.com"
     },
     "platform__build-with-claude__task-budgets.md": {
@@ -8313,8 +8313,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-06-19T13:33:19.417114",
-    "fetch_duration_seconds": 1450.708333,
+    "last_fetch_completed": "2026-06-20T12:59:44.559318",
+    "fetch_duration_seconds": 1491.349862,
     "total_pages_discovered": 1333,
     "pages_fetched_successfully": 1185,
     "pages_failed": 149,
@@ -8480,7 +8480,7 @@
     "total_files": 1185,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-06-19T13:33:19.417134",
+  "last_updated": "2026-06-20T12:59:44.559345",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
