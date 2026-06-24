@@ -107,8 +107,8 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "35a6695864964f09fdf227dcdab50f087b2f7f8d38f502e80a95bd8358470607",
-      "last_updated": "2026-06-23T12:55:19.586039",
+      "hash": "97b64b3308d23fd7c5b59f546bfb1d802f4e403ee15929d6b7ca7b5e7c3524b7",
+      "last_updated": "2026-06-24T12:42:45.389893",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -789,8 +789,8 @@
     "platform__managed-agents__self-hosted-sandboxes.md": {
       "original_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes",
       "original_md_url": "https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes.md",
-      "hash": "5ca9710cc77a227a56bc432fc210e7f9c7c5e84f02d68e910c4f3ea80779ec24",
-      "last_updated": "2026-06-13T12:35:38.941677",
+      "hash": "767106771527038f85a03e03c9847cf5481377ca6600a7124060eb43d895b51a",
+      "last_updated": "2026-06-24T12:43:49.492383",
       "source": "platform.claude.com"
     },
     "platform__managed-agents__events-and-streaming.md": {
@@ -8307,14 +8307,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "8033b378af68ab887186aeddcbec3f609a6e9fc26f86fda7e9189ca8e8e8b862",
-      "last_updated": "2026-06-23T13:19:54.998777",
+      "hash": "21244ba2860ec962969315881ac2eef2041419f4697e1f59decb39a8087ee9c5",
+      "last_updated": "2026-06-24T13:07:23.037402",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-06-23T13:19:54.999248",
-    "fetch_duration_seconds": 1490.349115,
+    "last_fetch_completed": "2026-06-24T13:07:23.037889",
+    "fetch_duration_seconds": 1490.843182,
     "total_pages_discovered": 1333,
     "pages_fetched_successfully": 1185,
     "pages_failed": 149,
@@ -8480,7 +8480,7 @@
     "total_files": 1185,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-06-23T13:19:54.999265",
+  "last_updated": "2026-06-24T13:07:23.037909",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
