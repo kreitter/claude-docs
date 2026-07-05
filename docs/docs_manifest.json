@@ -8432,8 +8432,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-07-04T12:49:15.315281",
-    "fetch_duration_seconds": 1524.747125,
+    "last_fetch_completed": "2026-07-05T12:54:47.864830",
+    "fetch_duration_seconds": 1639.746739,
     "total_pages_discovered": 1422,
     "pages_fetched_successfully": 1202,
     "pages_failed": 221,
@@ -8671,7 +8671,7 @@
     "total_files": 1202,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-07-04T12:49:15.315299",
+  "last_updated": "2026-07-05T12:54:47.864853",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
