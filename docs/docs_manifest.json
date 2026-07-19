@@ -67,8 +67,8 @@
     "code__bwc__mcp.md": {
       "original_url": "https://code.claude.com/docs/en/mcp",
       "original_md_url": "https://code.claude.com/docs/en/mcp.md",
-      "hash": "ccd78c0b303335cec998e7a8658aa143e7f0c3d51ac743e3035b44fde888a489",
-      "last_updated": "2026-07-18T12:17:15.676820",
+      "hash": "52e110820b2be82dd8ced2ea6adebac330ddaaa987be836f67780fb27ee39214",
+      "last_updated": "2026-07-19T12:17:12.707374",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -123,8 +123,8 @@
     "code__bwc__troubleshooting.md": {
       "original_url": "https://code.claude.com/docs/en/troubleshooting",
       "original_md_url": "https://code.claude.com/docs/en/troubleshooting.md",
-      "hash": "5059824d592ddd4d030a44c36bb736fca7e3c3931362c219ebd6a135cd0b23d4",
-      "last_updated": "2026-07-18T12:17:23.058767",
+      "hash": "b4687d055a34f36535401bbe8681a0eb1ae3acf0d48df5c8016f4d8662e88ef2",
+      "last_updated": "2026-07-19T12:17:18.910302",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -8545,14 +8545,14 @@
     "changelog.md": {
       "original_url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
       "original_raw_url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-      "hash": "7ac18288cba32eeffb5df3ed074ec0dcad1577600b2e30d8862fe8d06877126c",
-      "last_updated": "2026-07-18T12:44:32.016070",
+      "hash": "db9fe8e89591c8473c2c880e08277fbbdaaacc6cfd43ffeb9d0a3cabcbe5a0a3",
+      "last_updated": "2026-07-19T12:44:58.160148",
       "source": "claude-code-repository"
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-07-18T12:44:32.016556",
-    "fetch_duration_seconds": 1644.309466,
+    "last_fetch_completed": "2026-07-19T12:44:58.160676",
+    "fetch_duration_seconds": 1673.017165,
     "total_pages_discovered": 1439,
     "pages_fetched_successfully": 1219,
     "pages_failed": 221,
@@ -8790,7 +8790,7 @@
     "total_files": 1219,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-07-18T12:44:32.016574",
+  "last_updated": "2026-07-19T12:44:58.160698",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
