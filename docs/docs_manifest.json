@@ -59,8 +59,8 @@
     "code__ref__interactive-mode.md": {
       "original_url": "https://code.claude.com/docs/en/interactive-mode",
       "original_md_url": "https://code.claude.com/docs/en/interactive-mode.md",
-      "hash": "282f0498c0dd2600fb538f616eae32f9c3d200e9edb8e7c734d66371586b01c0",
-      "last_updated": "2026-07-23T12:31:24.287891",
+      "hash": "90e27bd6098951770c798f7c8df4c01c321bc1bf1ce7c0a69562b05006211036",
+      "last_updated": "2026-07-26T12:22:51.315938",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -83,8 +83,8 @@
     "code__bwc__plugin-marketplaces.md": {
       "original_url": "https://code.claude.com/docs/en/plugin-marketplaces",
       "original_md_url": "https://code.claude.com/docs/en/plugin-marketplaces.md",
-      "hash": "b26587f202719e55188d55f099b17adad7a64a046bf838a7843627aa72e4129e",
-      "last_updated": "2026-07-22T12:32:07.496310",
+      "hash": "ba170944ebfaffed2546f18950d01ac207819c29e6bd58ea82a07a3cb2752209",
+      "last_updated": "2026-07-26T12:22:53.257592",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -3966,8 +3966,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-07-25T12:24:18.247633",
-    "fetch_duration_seconds": 348.539813,
+    "last_fetch_completed": "2026-07-26T12:28:43.207636",
+    "fetch_duration_seconds": 358.321124,
     "total_pages_discovered": 565,
     "pages_fetched_successfully": 564,
     "pages_failed": 2,
@@ -3986,7 +3986,7 @@
     "total_files": 564,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-07-25T12:24:18.247657",
+  "last_updated": "2026-07-26T12:28:43.207662",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
