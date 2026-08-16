@@ -3,8 +3,8 @@
     "code__bwc__sub-agents.md": {
       "original_url": "https://code.claude.com/docs/en/sub-agents",
       "original_md_url": "https://code.claude.com/docs/en/sub-agents.md",
-      "hash": "d10513fcf72757870b9d9656dad18c60bbf5912f78a88f65054811df3b0c2201",
-      "last_updated": "2026-08-15T12:03:37.753222",
+      "hash": "ca660359d8230ec7198f05a70943df5bb0474dfe71710a6955811d639890861f",
+      "last_updated": "2026-08-16T12:04:04.711495",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -91,8 +91,8 @@
     "code__ref__cli-reference.md": {
       "original_url": "https://code.claude.com/docs/en/cli-reference",
       "original_md_url": "https://code.claude.com/docs/en/cli-reference.md",
-      "hash": "0efaa65cf7c575c9c5ccdcba6f9bd7bede5e84ab1d7b42cafa911e3af8fa9c03",
-      "last_updated": "2026-08-15T12:03:48.790416",
+      "hash": "3a0c9da336b03d58206aa25e75869edf97868cdf7c3cdce0194894a72ba35a04",
+      "last_updated": "2026-08-16T12:04:16.048569",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -4078,8 +4078,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-08-15T12:09:33.965740",
-    "fetch_duration_seconds": 357.186031,
+    "last_fetch_completed": "2026-08-16T12:10:17.605128",
+    "fetch_duration_seconds": 374.820236,
     "total_pages_discovered": 582,
     "pages_fetched_successfully": 580,
     "pages_failed": 3,
@@ -4099,7 +4099,7 @@
     "total_files": 580,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-08-15T12:09:33.965757",
+  "last_updated": "2026-08-16T12:10:17.605155",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
