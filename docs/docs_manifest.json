@@ -43,8 +43,8 @@
     "code__bwc__hooks-guide.md": {
       "original_url": "https://code.claude.com/docs/en/hooks-guide",
       "original_md_url": "https://code.claude.com/docs/en/hooks-guide.md",
-      "hash": "988a0517b43b96726248a7707712769981c300e34dc8d9cf839c3ebd7e23d916",
-      "last_updated": "2026-08-15T12:03:43.744764",
+      "hash": "e4ce7337cb6467b51c38fe10e6566ea28fca5a7a40358f7015512748a0375c33",
+      "last_updated": "2026-08-17T12:05:51.217442",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -115,8 +115,8 @@
     "code__ref__hooks.md": {
       "original_url": "https://code.claude.com/docs/en/hooks",
       "original_md_url": "https://code.claude.com/docs/en/hooks.md",
-      "hash": "2d12e3861770c65b0db9a3bf3cea34e90925ad3fa5622203246a98eb53a2e5d2",
-      "last_updated": "2026-08-15T12:03:50.670801",
+      "hash": "bc6ebfe342d20f3e1100853deebf44c1aae2a12d612f74d421397ac275818da6",
+      "last_updated": "2026-08-17T12:05:58.573764",
       "source": "code.claude.com",
       "category": "ref"
     },
@@ -4078,8 +4078,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-08-16T12:10:17.605128",
-    "fetch_duration_seconds": 374.820236,
+    "last_fetch_completed": "2026-08-17T12:11:48.816579",
+    "fetch_duration_seconds": 363.73536,
     "total_pages_discovered": 582,
     "pages_fetched_successfully": 580,
     "pages_failed": 3,
@@ -4099,7 +4099,7 @@
     "total_files": 580,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-08-16T12:10:17.605155",
+  "last_updated": "2026-08-17T12:11:48.816606",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
