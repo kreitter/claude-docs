@@ -19,8 +19,8 @@
     "code__bwc__skills.md": {
       "original_url": "https://code.claude.com/docs/en/skills",
       "original_md_url": "https://code.claude.com/docs/en/skills.md",
-      "hash": "8552fefb7d225fcdc1c4098f6a33616d6a55e63206b9d84f0522c7411d0c4c41",
-      "last_updated": "2026-09-12T12:07:59.172511",
+      "hash": "cbf71046b92baef2f08c7847184eac9e15f9c1bd056b9a3cd12b5252fef53e38",
+      "last_updated": "2026-09-14T12:09:17.815209",
       "source": "code.claude.com",
       "category": "bwc"
     },
@@ -4505,8 +4505,8 @@
     }
   },
   "fetch_metadata": {
-    "last_fetch_completed": "2026-09-13T12:15:22.009358",
-    "fetch_duration_seconds": 425.59484,
+    "last_fetch_completed": "2026-09-14T12:16:29.923140",
+    "fetch_duration_seconds": 433.66477,
     "total_pages_discovered": 644,
     "pages_fetched_successfully": 641,
     "pages_failed": 4,
@@ -4527,7 +4527,7 @@
     "total_files": 641,
     "fetch_tool_version": "2.0.0"
   },
-  "last_updated": "2026-09-13T12:15:22.009380",
+  "last_updated": "2026-09-14T12:16:29.923170",
   "base_url": "https://raw.githubusercontent.com/kreitter/claude-docs/main/docs/",
   "github_repository": "kreitter/claude-docs",
   "github_ref": "main",
