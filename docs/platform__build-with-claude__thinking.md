@@ -16,7 +16,9 @@ Thinking has a cost: the tokens Claude spends reasoning are billed as output tok
 
 ## How thinking works
 
-![Diagram of how thinking works: Claude evaluates the request and decides whether to think up front; with tool use, thinking can recur between tool calls; one response returns thinking blocks, then text blocks](https://platform.claude.com/docs/images/how-thinking-works.svg)
+<Frame>
+  ![Diagram of how thinking works: Claude evaluates the request and decides whether to think up front; with tool use, thinking can recur between tool calls; one response returns thinking blocks, then text blocks](https://platform.claude.com/docs/images/how-thinking-works.svg)
+</Frame>
 
 Whether Claude thinks on a given request, and how deeply, depends on your thinking configuration and the complexity of the request.
 
@@ -282,6 +284,9 @@ On Claude Opus 4.8, Claude Opus 4.7, Claude Opus 4.6, and Claude Sonnet 4.6, thi
     max_tokens: 16000,
     thinking: {
       type: "adaptive",
+      # A plain hash like this one takes display:. The typed ThinkingConfigAdaptive class
+      # spells it display_ (trailing underscore) to avoid shadowing Ruby's Kernel#display.
+      # The request still sends display.
       display: "summarized"
     },
     messages: [
@@ -509,8 +514,6 @@ Keep the following in mind when working with omitted thinking:
   The `signature` field is identical whichever `display` value you set. Switching `display` values between turns in a conversation is supported.
 </Note>
 
-In the Ruby SDK, plain hashes take `display:` as the examples show. The typed `ThinkingConfigAdaptive` class names the parameter `display_` (trailing underscore, to avoid shadowing Ruby's `Kernel#display`). Either way, the wire field is still `display`.
-
 ### Summarized thinking
 
 When `display` is `"summarized"`, the thinking text you receive is a summary of Claude's full thinking process rather than the raw chain of thought. Summarized thinking provides the full intelligence benefits of thinking while preventing misuse. No `display` setting returns the raw chain of thought.
@@ -533,7 +536,9 @@ To see the model's reasoning, read the `thinking` blocks rather than prompting f
 
 Thinking works with [streaming](https://platform.claude.com/docs/en/build-with-claude/streaming). Thinking blocks stream as `thinking_delta` events inside `content_block_delta` events, followed by a single `signature_delta` event just before the block's `content_block_stop`. Text blocks stream afterward as usual.
 
-![Diagram of the streaming event sequence with thinking: the thinking block opens, thinking deltas carry text only when the display setting returns text (summarized, or updates for progress-update blocks), a single signature delta closes the block, then text deltas stream](https://platform.claude.com/docs/images/how-thinking-streams.svg)
+<Frame>
+  ![Diagram of the streaming event sequence with thinking: the thinking block opens, thinking deltas carry text only when the display setting returns text (summarized, or updates for progress-update blocks), a single signature delta closes the block, then text deltas stream](https://platform.claude.com/docs/images/how-thinking-streams.svg)
+</Frame>
 
 The following examples stream a response with adaptive thinking, printing thinking and text deltas as they arrive:
 
@@ -775,6 +780,9 @@ The following examples stream a response with adaptive thinking, printing thinki
   stream = client.messages.stream(
     model: "claude-opus-4-8",
     max_tokens: 16000,
+    # A plain hash like this one takes display:. The typed ThinkingConfigAdaptive class
+    # spells it display_ (trailing underscore) to avoid shadowing Ruby's Kernel#display.
+    # The request still sends display.
     thinking: { type: "adaptive", display: "summarized" },
     messages: [
       { role: "user", content: "What is the greatest common divisor of 1071 and 462?" }
@@ -1062,7 +1070,7 @@ Preservation brings two benefits:
 
 The tradeoff is context usage: long conversations consume more context space on keep-all models, because retained thinking blocks count as input like any other conversation history (see [Thinking and the context window](https://platform.claude.com/docs/en/build-with-claude/thinking#thinking-and-the-context-window)). The behavior is automatic in both regimes. No code changes or beta headers are required, and you should keep passing complete, unmodified thinking blocks back as described in [Preserving thinking blocks](https://platform.claude.com/docs/en/build-with-claude/thinking#preserving-thinking-blocks). To override the default in either direction, use [thinking block clearing](https://platform.claude.com/docs/en/build-with-claude/context-editing#thinking-block-clearing).
 
-**Switching models mid-conversation.** Keep passing thinking blocks back unchanged when you switch models, for example after a [classifier refusal fallback](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback). A thinking block is readable only by the model that produced it and certain other models, and the API ignores or drops the blocks the target model can't read. On Claude Fable 5.1 and Claude Mythos 5.1 the direction matters: they read every earlier model's thinking blocks and no earlier model reads theirs, so switching up to them keeps the conversation's reasoning and switching down drops it (see [how dropped blocks are billed and reported](https://platform.claude.com/docs/en/build-with-claude/preserved-thinking#switching-models)). Claude Opus 5.5 reads Claude Opus 5's thinking blocks and those of earlier Opus, Sonnet, and Haiku models, but not those of the Claude Fable and Claude Mythos models; on the Claude API, Claude Fable 5.1 and Claude Mythos 5.1 read Claude Opus 5.5's blocks. A switch from Claude Opus 5.5 up to Claude Fable 5.1 on the Claude API keeps the earlier turns' reasoning; a switch from Claude Fable 5.1 to Claude Opus 5.5 drops it. Claude Sonnet 5.5 reads thinking blocks from Claude Sonnet 5, Claude Opus 4.8, Claude Haiku 4.5, and earlier models, but not from Claude Opus 5, Claude Opus 5.5, or any Claude Fable or Claude Mythos model. No other model reads its blocks, so a switch from Claude Sonnet 5.5 to any other model drops its reasoning. Strip prior `thinking` and `redacted_thinking` blocks yourself only to save input tokens on models that ignore rather than drop them, and never when redeeming a [fallback credit](https://platform.claude.com/docs/en/build-with-claude/fallback-credit), which requires the body unchanged.
+**Switching models mid-conversation.** Keep passing thinking blocks back unchanged when you switch models, for example after a [classifier refusal fallback](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback). A thinking block is readable only by the model that produced it and certain other models, and the API ignores or drops the blocks the target model can't read. On Claude Fable 5.1 and Claude Mythos 5.1 the direction matters: they read every earlier model's thinking blocks and no earlier model reads theirs, so switching up to them keeps the conversation's reasoning and switching down drops it (see [how dropped blocks are billed and reported](https://platform.claude.com/docs/en/build-with-claude/preserved-thinking#switching-models)). Claude Opus 5.5 reads Claude Opus 5's thinking blocks and those of earlier Opus, Sonnet, and Haiku models, but not those of the Claude Fable and Claude Mythos models; on the Claude API, Claude Fable 5.1 and Claude Mythos 5.1 read Claude Opus 5.5's blocks. A switch from Claude Opus 5.5 up to Claude Fable 5.1 on the Claude API keeps the earlier turns' reasoning; a switch from Claude Fable 5.1 to Claude Opus 5.5 drops it. Claude Sonnet 5.5 reads thinking blocks from Claude Sonnet 5, Claude Opus 4.8, Claude Haiku 4.5, and earlier models, but not from Claude Opus 5, Claude Opus 5.5, or any Claude Fable or Claude Mythos model. On the Claude API, Claude Opus 5.5 reads Claude Sonnet 5.5's blocks and no other model does: a switch from Claude Sonnet 5.5 up to Claude Opus 5.5 on the Claude API keeps the earlier turns' reasoning, and any other switch away from Claude Sonnet 5.5 drops it. Strip prior `thinking` and `redacted_thinking` blocks yourself only to save input tokens on models that ignore rather than drop them, and never when redeeming a [fallback credit](https://platform.claude.com/docs/en/build-with-claude/fallback-credit), which requires the body unchanged.
 
 ## Preserved thinking
 
@@ -1213,7 +1221,7 @@ See the [models overview](https://platform.claude.com/docs/en/models/overview) f
 
 ### Long requests
 
-The SDKs require streaming when `max_tokens` is greater than 21,333, to avoid HTTP timeouts on long-running requests. This is a client-side validation, not an API restriction. If you don't need to process events incrementally, use `.stream()` (java: `.createStreaming()`; csharp: `.CreateStreaming()`; go: `.NewStreaming()`; php: `->createStream()`) with `.get_final_message()` (typescript: `.finalMessage()`; ruby: `.accumulated_message`; csharp: `.Aggregate()`; go: `message.Accumulate(event)`; java, php: `MessageAccumulator`) to get the complete `Message` object without assembling it from individual events yourself. See [Streaming Messages](https://platform.claude.com/docs/en/build-with-claude/streaming#get-the-final-message-without-handling-events). Expect longer response times when thinking is active, because generating thinking blocks adds processing time. For workloads that push thinking above roughly 32k tokens per request, use [batch processing](https://platform.claude.com/docs/en/build-with-claude/batch-processing) to avoid networking issues: such requests can run long enough to hit system timeouts and open connection limits.
+The SDK requires streaming when `max_tokens` is greater than 21,333, to avoid HTTP timeouts on long-running requests. This is a client-side validation, not an API restriction. If you don't need to process events incrementally, use `.stream()` (java: `.createStreaming()`; csharp: `.CreateStreaming()`; go: `.NewStreaming()`; php: `->createStream()`) with `.get_final_message()` (typescript: `.finalMessage()`; ruby: `.accumulated_message`; csharp: `.Aggregate()`; go: `message.Accumulate(event)`; java, php: `MessageAccumulator`) to get the complete `Message` object without assembling it from individual events yourself. See [Streaming Messages](https://platform.claude.com/docs/en/build-with-claude/streaming#get-the-final-message-without-handling-events). Expect longer response times when thinking is active, because generating thinking blocks adds processing time. For workloads that push thinking above roughly 32k tokens per request, use [batch processing](https://platform.claude.com/docs/en/build-with-claude/batch-processing) to avoid networking issues: such requests can run long enough to hit system timeouts and open connection limits.
 
 ## Next steps
 
